@@ -1,6 +1,6 @@
 from datetime import datetime
 from sqlalchemy import select, desc
-from work_with_database_PostgreSQL.models import Product
+from AI_managers_sales_toys.work_with_database_PostgreSQL.models import Product
 
 class ArticleGenerator:
     def __init__(self, session):

@@ -128,6 +128,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # для collectstatic
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # загальна папка static
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -148,4 +152,25 @@ LOGGING = {
             'level': 'DEBUG',
         },
     },
+}
+
+
+# Кешування
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+        'TIMEOUT': 300,  # 5 хвилин
+    }
+}
+
+# Налаштування сесій
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_CACHE_ALIAS = 'default'
+
+# Оптимізація бази даних
+CONN_MAX_AGE = 60  # Тривалість з'єднання в секундах
+DATABASE_OPTIONS = {
+    'timeout': 30,  # Таймаут для операцій з БД
+    'CONN_MAX_AGE': 60
 }

@@ -1,6 +1,6 @@
 from datetime import datetime
 from sqlalchemy import select, desc
-from work_with_database_PostgreSQL.models import Order
+from AI_managers_sales_toys.work_with_database_PostgreSQL.models import Order
 
 class OrderNumberGenerator:
     def __init__(self, session):

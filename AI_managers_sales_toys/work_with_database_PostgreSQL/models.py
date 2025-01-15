@@ -1,4 +1,4 @@
-from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey, text, Numeric, Computed, Text, JSON
+from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey, text, Numeric, Computed, Text, JSON, func
 from sqlalchemy.orm import Mapped, mapped_column, DeclarativeBase, relationship
 import enum
 import datetime
@@ -40,8 +40,8 @@ class AgeCategory(enum.Enum):
 order_products = Table(
     'orders_orderproduct',
     Base.metadata,
-    Column('order_number', String(255), ForeignKey('orders_order.order_number', ondelete='CASCADE')),
-    Column('article', String(255), ForeignKey('products_product.article')),
+    Column('order_id', String(255), ForeignKey('orders_order.id', ondelete='CASCADE')),
+    Column('product_id', Integer, ForeignKey('products_product.id')),
     Column('quantity', Integer, nullable=False, default=1)
 )
 
@@ -51,15 +51,26 @@ class User(Base):
     id: Mapped[int_pk]
     user_id: Mapped[int] = mapped_column(
         nullable=False,
-        index=True
+        index=True,
+        unique=True
     )
     full_name: Mapped[str] = mapped_column(String(255), nullable=False)
     phone_number: Mapped[str] = mapped_column(String(255), nullable=False)
-    created_at: Mapped[created_at]
-    updated_at: Mapped[updated_at]
+    created_at: Mapped[datetime.datetime] = mapped_column(
+        server_default=func.now(),  # використовуємо func.now() замість text
+        nullable=False
+    )
+    updated_at: Mapped[datetime.datetime] = mapped_column(
+        server_default=func.now(),
+        onupdate=func.now(),  # автоматичне оновлення при зміні
+        nullable=False
+    )
 
     # Додаємо зв'язок з ордерами
     orders: Mapped[List["Order"]] = relationship("Order", back_populates="user")
+
+    def __str__(self):
+        return self.full_name
 
 
 class Order(Base):
@@ -92,10 +103,10 @@ class Order(Base):
             text("""
                 SELECT COALESCE(SUM(p.price * op.quantity), 0) as total
                 FROM products_product p 
-                JOIN orders_orderproduct op ON p.article = op.article
-                WHERE op.order_number = :order_number
+                JOIN orders_orderproduct op ON p.id = op.product_id
+                WHERE op.order_id = :order_id
             """),
-            {"order_number": self.order_number}
+            {"order_id": self.id}
         )
         self.total_price = result.scalar()
 
