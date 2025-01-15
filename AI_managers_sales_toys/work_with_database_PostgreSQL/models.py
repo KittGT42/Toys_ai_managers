@@ -1,4 +1,4 @@
-from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey, text, Numeric, Computed, Text
+from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey, text, Numeric, Computed, Text, JSON
 from sqlalchemy.orm import Mapped, mapped_column, DeclarativeBase, relationship
 import enum
 import datetime
@@ -38,18 +38,21 @@ class AgeCategory(enum.Enum):
     EIGHTEEN_PLUS = '18+' # Від 18 років
 
 order_products = Table(
-    'order_products',
+    'orders_orderproduct',
     Base.metadata,
-    Column('order_number', String(255), ForeignKey('orders.order_number', ondelete='CASCADE')),
-    Column('article', String(255), ForeignKey('products.article')),
+    Column('order_number', String(255), ForeignKey('orders_order.order_number', ondelete='CASCADE')),
+    Column('article', String(255), ForeignKey('products_product.article')),
     Column('quantity', Integer, nullable=False, default=1)
 )
 
 
 class User(Base):
-    __tablename__ = 'users'
+    __tablename__ = 'users_user'
     id: Mapped[int_pk]
-    user_id: Mapped[int] = mapped_column(nullable=False)
+    user_id: Mapped[int] = mapped_column(
+        nullable=False,
+        index=True
+    )
     full_name: Mapped[str] = mapped_column(String(255), nullable=False)
     phone_number: Mapped[str] = mapped_column(String(255), nullable=False)
     created_at: Mapped[created_at]
@@ -60,14 +63,18 @@ class User(Base):
 
 
 class Order(Base):
-    __tablename__ = 'orders'
+    __tablename__ = 'orders_order'
     id: Mapped[int_pk]
     order_number: Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
-    user_id: Mapped[int] = mapped_column(ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
+    user_id: Mapped[int] = mapped_column(ForeignKey('users_user.id', ondelete='CASCADE'), nullable=False)
     delivery_address: Mapped[str] = mapped_column(String(255), nullable=False)
     created_at: Mapped[created_at]
     updated_at: Mapped[updated_at]
-    status: Mapped[OrderStatus] = mapped_column(default=OrderStatus.NEW)
+    status: Mapped[str] = mapped_column(
+        String(20),
+        default=OrderStatus.NEW.value,
+        nullable=False
+    )
 
     # Додаємо зв'язки
     user: Mapped["User"] = relationship("User", back_populates="orders")
@@ -84,8 +91,8 @@ class Order(Base):
         result = session.execute(
             text("""
                 SELECT COALESCE(SUM(p.price * op.quantity), 0) as total
-                FROM products p 
-                JOIN order_products op ON p.article = op.article
+                FROM products_product p 
+                JOIN orders_orderproduct op ON p.article = op.article
                 WHERE op.order_number = :order_number
             """),
             {"order_number": self.order_number}
@@ -94,14 +101,18 @@ class Order(Base):
 
 
 class Product(Base):
-    __tablename__ = 'products'
+    __tablename__ = 'products_product'
     id: Mapped[int_pk]
     article: Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
     stock_article: Mapped[str] = mapped_column(String(255), nullable=True, unique=True)
     name: Mapped[str] = mapped_column(Text, nullable=False)
-    gender: Mapped[str] = mapped_column(String(255), nullable=True)
+    gender: Mapped[str] = mapped_column(
+        String(255),
+        nullable=True,
+        default=Gender.UNISEX.value
+    )
     main_image: Mapped[str] = mapped_column(Text, nullable=True)
-    images_urls: Mapped[List[str]] = mapped_column(Text, nullable=True)
+    images_urls: Mapped[dict] = mapped_column(JSON, nullable=True)
     description: Mapped[str] = mapped_column(Text, nullable=True)
     age_category: Mapped[str] = mapped_column(String(255), nullable=True)
     price: Mapped[Decimal] = mapped_column(Numeric(10, 2), nullable=False)
@@ -119,6 +130,3 @@ class Product(Base):
         secondary=order_products,
         back_populates="products"
     )
-
-
-

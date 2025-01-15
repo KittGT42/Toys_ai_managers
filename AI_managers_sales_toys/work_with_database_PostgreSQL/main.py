@@ -1,7 +1,4 @@
-from work_with_database_PostgreSQL.database import DatabaseUser, create_tables, DatabaseProduct, DatabaseOrder
-from decimal import Decimal
 
-create_tables()
 
 # db_user = DatabaseUser()
 # db_user.insert_user(user_id=1122334455 ,full_name="John Doe", email="yK7oV@example.com", password="password123")
