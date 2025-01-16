@@ -1,6 +1,6 @@
 import requests
-from work_with_telegram.work_with_telegram_bot.config import TELEGRAM_BOT_TOKEN, ADMIN_USER_ID
-from work_with_telegram.work_with_telegram_bot.utils import configure_logging
+from AI_managers_sales_toys.work_with_telegram.work_with_telegram_bot.config import TELEGRAM_BOT_TOKEN, ADMIN_USER_ID
+from AI_managers_sales_toys.work_with_telegram.work_with_telegram_bot.utils import configure_logging
 
 logger = configure_logging()
 

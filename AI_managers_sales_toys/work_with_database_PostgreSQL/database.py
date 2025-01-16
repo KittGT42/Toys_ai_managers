@@ -93,23 +93,27 @@ class DatabaseOrder:
        self.engine = sync_engine
        self.session = session
 
-   def insert_order(self, user_id: int, delivery_address: str,
-                    products_data: list[dict]):
+   def insert_order(self, user_id: int, delivery_address: str, products_data: list[dict]):
        with self.session() as session_obj:
            try:
+               # Знаходимо user.id за user_id
+               user = session_obj.query(User).filter(User.user_id == user_id).first()
+               if not user:
+                   raise ValueError(f"User with user_id={user_id} not found")
+
                order_number = order_number_generator.generate_order_number()
                current_time = datetime.datetime.now(datetime.timezone.utc)
 
                new_order = Order(
                    order_number=order_number,
-                   user_id=user_id,
+                   user_id=user.id,  # використовуємо user.id
                    delivery_address=delivery_address,
                    status=OrderStatus.NEW.value,
                    created_at=current_time,
                    updated_at=current_time
                )
                session_obj.add(new_order)
-               session_obj.flush()  # Отримуємо id нового замовлення
+               session_obj.flush()
 
                for product_data in products_data:
                    product = session_obj.query(Product).filter(
@@ -117,8 +121,8 @@ class DatabaseOrder:
                    ).first()
                    if product:
                        stmt = order_products.insert().values(
-                           order_id=new_order.id,  # Використовуємо id замість order_number
-                           product_id=product.id,  # Використовуємо id продукту
+                           order_id=new_order.id,
+                           product_id=product.id,
                            quantity=product_data["quantity"]
                        )
                        session_obj.execute(stmt)

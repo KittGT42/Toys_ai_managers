@@ -3,10 +3,10 @@ from dotenv import load_dotenv
 from telethon import TelegramClient, events
 from openai import OpenAI
 import json
-from work_with_telegram.utils import configure_logging
-from work_with_telegram.work_with_telegram_bot.telegram_bot_handler import send_telegram_message
-from work_with_database_MongoDB.mongodb_messages import Messages
-from work_with_database_PostgreSQL.database import DatabaseUser, DatabaseOrder
+from AI_managers_sales_toys.work_with_telegram.utils import configure_logging
+from AI_managers_sales_toys.work_with_telegram.work_with_telegram_bot.telegram_bot_handler import send_telegram_message
+from AI_managers_sales_toys.work_with_database_MongoDB.mongodb_messages import Messages
+from AI_managers_sales_toys.work_with_database_PostgreSQL.database import DatabaseUser, DatabaseOrder
 
 user_db = DatabaseUser()
 order_db = DatabaseOrder()
@@ -45,16 +45,19 @@ user_threads = {}
 async def sent_data_for_order(user_name, user_phone, user_address, name, price, article, user_id):
     message = (f"ПІБ: {user_name}\nТелефон: {user_phone}\nАдреса: {user_address}"
                f"\nТовар: {name}\nЦіна: {price}\nАртикул: {article}"f"")
-
-    await asyncio.to_thread(user_db.insert_user(user_id=int(user_id), full_name=user_name, phone_number=user_phone,))
+    if user_db.select_user(user_id=int(user_id)) is None:
+        await asyncio.to_thread(user_db.insert_user(user_id=int(user_id), full_name=user_name, phone_number=user_phone,))
 
     order_data = {
                 'user_id': int(user_id),
                 'full_name': user_name,
                 'product_name': name,
                 'price': float(price[:-4]),
-                'delivery_address': user_address
+                'delivery_address': user_address,
+                'article': {"article": article, "quantity": 1},
             }
+
+    await asyncio.to_thread(order_db.insert_order(order_data))
     return send_telegram_message(message)
 
 

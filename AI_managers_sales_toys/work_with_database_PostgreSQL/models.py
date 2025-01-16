@@ -40,10 +40,11 @@ class AgeCategory(enum.Enum):
 order_products = Table(
     'orders_orderproduct',
     Base.metadata,
-    Column('order_id', String(255), ForeignKey('orders_order.id', ondelete='CASCADE')),
+    Column('order_id', Integer, ForeignKey('orders_order.id', ondelete='CASCADE')),
     Column('product_id', Integer, ForeignKey('products_product.id')),
     Column('quantity', Integer, nullable=False, default=1)
 )
+
 
 
 class User(Base):
@@ -77,7 +78,7 @@ class Order(Base):
     __tablename__ = 'orders_order'
     id: Mapped[int_pk]
     order_number: Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
-    user_id: Mapped[int] = mapped_column(ForeignKey('users_user.id', ondelete='CASCADE'), nullable=False)
+    user_id: Mapped[int] = mapped_column(ForeignKey('users_user.id', ondelete='CASCADE'), nullable=False)  # змінено на id
     delivery_address: Mapped[str] = mapped_column(String(255), nullable=False)
     created_at: Mapped[created_at]
     updated_at: Mapped[updated_at]

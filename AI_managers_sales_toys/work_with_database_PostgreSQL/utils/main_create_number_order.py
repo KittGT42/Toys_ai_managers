@@ -2,15 +2,16 @@ from datetime import datetime
 from sqlalchemy import select, desc
 from AI_managers_sales_toys.work_with_database_PostgreSQL.models import Order
 
+
 class OrderNumberGenerator:
     def __init__(self, session):
         self.session = session
-        self.prefix = "ORDER"  # Префікс для всіх артикулів
-        self.year = str(datetime.now().year)[-2:]  # Останні 2 цифри поточного року
+        self.prefix = "ORDER"
+        self.year = str(datetime.now().year)[-2:]
 
     def _get_last_order_number(self):
         """
-        Отримує останній використаний артикул з бази даних
+        Отримує останній використаний номер замовлення з бази даних
         """
         with self.session() as session_obj:
             query = (
@@ -23,30 +24,38 @@ class OrderNumberGenerator:
             last_order_number = result.scalar()
             return last_order_number
 
+    def _extract_number(self, order_number):
+        """
+        Витягує числову частину з номера замовлення
+        """
+        if not order_number:
+            return 0
+        try:
+            # Пропускаємо 'ORDER' (5 символів) та рік (2 символи)
+            number_str = order_number[7:]
+            return int(number_str)
+        except (ValueError, IndexError):
+            return 0
+
     def generate_order_number(self) -> str:
         """
-        Генерує новий унікальний артикул
-        Формат: PR23XXXXX, де:
-        - PR: префікс
-        - 23: рік
-        - XXXXX: п'ятизначний порядковий номер
+        Генерує новий унікальний номер замовлення
         """
         last_order_number = self._get_last_order_number()
+        last_number = self._extract_number(last_order_number)
 
-        if not last_order_number:
-            # Якщо артикулів ще немає, починаємо з 00001
-            new_number = 1
-        else:
-            # Отримуємо номер з останнього артикула і збільшуємо його на 1
-            try:
-                last_number = int(last_order_number[4:])  # Пропускаємо префікс і рік
-                new_number = last_number + 1
-            except (ValueError, IndexError):
-                # Якщо виникла помилка при парсингу, починаємо з 1
-                new_number = 1
+        # Перевірка, чи існує такий номер
+        while True:
+            new_number = last_number + 1
+            new_order_number = f"{self.prefix}{self.year}{new_number:05d}"
 
-        # Форматуємо новий номер як п'ятизначне число
-        formatted_number = f"{new_number:05d}"
-        new_order_number = f"{self.prefix}{self.year}{formatted_number}"
+            # Перевіряємо, чи існує такий номер в базі
+            with self.session() as session_obj:
+                existing_order = session_obj.execute(
+                    select(Order).where(Order.order_number == new_order_number)
+                ).scalar()
 
-        return new_order_number
+                if not existing_order:
+                    return new_order_number
+
+                last_number = new_number

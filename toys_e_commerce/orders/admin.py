@@ -3,41 +3,42 @@ from django.db.models import Prefetch
 from django.core.cache import cache
 from django.utils.html import format_html
 from .models import Order, OrderProduct
-
+from products.models import Product
 
 class OrderProductInline(admin.TabularInline):
     model = OrderProduct
     extra = 1
     max_num = 10
     can_delete = True
-    raw_id_fields = ('product',)
-    readonly_fields = ('get_article', 'product_link')
-    fields = ('product','get_article', 'product_link', 'quantity',)
+    raw_id_fields = ('product',)  # Використовуємо raw_id_fields для popup вікна пошуку
+    readonly_fields = ('get_article', 'get_name', 'get_price')
+    fields = ('product', 'get_article', 'get_name', 'get_price', 'quantity')  # Змінили порядок полів
     verbose_name = "товар в замовленні"
     verbose_name_plural = "товари в замовленні"
 
-    def get_formset(self, request, obj=None, **kwargs):
-        formset = super().get_formset(request, obj, **kwargs)
-        # Для відображення артикула разом з назвою в селекті
-        formset.form.base_fields['product'].label_from_instance = lambda prod: f"{prod.article} - {prod.name}"
-        return formset
-
-
     def get_article(self, obj):
-        return obj.product.article if obj.product else '-'
-    get_article.short_description = 'Артикул'
-
-    def product_link(self, obj):
         if obj.product:
-            url = f'/admin/products/product/{obj.product.id}/change/'
-            return format_html('<a href="{}">{}</a>', url, obj.product.name)
+            return format_html(
+                '<a href="#" onclick="return showProductPopup(\'{}\');">{}</a>',
+                obj.product.id,
+                obj.product.article
+            )
         return '-'
-    product_link.short_description = 'Назва продукту'
+    get_article.short_description = 'Артикул'
+    get_article.allow_tags = True
 
-    def get_queryset(self, request):
-        queryset = super().get_queryset(request)
-        return queryset.select_related('product')
+    def get_name(self, obj):
+        return obj.product.name if obj.product else '-'
+    get_name.short_description = 'Назва продукту'
 
+    def get_price(self, obj):
+        return f"{obj.product.price} грн" if obj.product else '-'
+    get_price.short_description = 'Ціна'
+
+    class Media:
+        js = ('admin/js/vendor/jquery/jquery.min.js',
+              'admin/js/jquery.init.js',
+              'orders/js/order_product_search.js',)
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
@@ -62,47 +63,7 @@ class OrderAdmin(admin.ModelAdmin):
                 )
             )
             cache.set(cache_key, queryset, 60)
-
         return queryset
 
-    def get_inline_instances(self, request, obj=None):
-        # Оптимізація для створення нового об'єкту
-        if not obj:
-            return []
-        return super().get_inline_instances(request, obj)
-
     class Media:
-        css = {
-            'all': ('admin/css/forms.css',)
-        }
-        js = (
-            'admin/js/vendor/jquery/jquery.min.js',
-            'admin/js/jquery.init.js',
-            'orders/js/order_total.js',
-        )
-
-
-# @admin.register(OrderProduct)
-# class OrderProductAdmin(admin.ModelAdmin):
-#     list_display = ['get_order_number', 'get_article', 'product_link', 'quantity']
-#     list_select_related = ['order', 'product']
-#     search_fields = ['order__order_number', 'product__article', 'product__name']
-#     raw_id_fields = ('product',)
-#
-#     def get_order_number(self, obj):
-#         return obj.order.order_number
-#     get_order_number.short_description = 'Номер замовлення'
-#     get_order_number.admin_order_field = 'order__order_number'
-#
-#     def get_article(self, obj):
-#         return obj.product.article if obj.product else '-'
-#     get_article.short_description = 'Артикул'
-#     get_article.admin_order_field = 'product__article'
-#
-#     def product_link(self, obj):
-#         if obj.product:
-#             url = f'/admin/products/product/{obj.product.id}/change/'
-#             return format_html('<a href="{}">{}</a>', url, obj.product.name)
-#         return '-'
-#     product_link.short_description = 'Назва продукту'
-#     product_link.admin_order_field = 'product__name'
+        css = {'all': ('admin/css/forms.css',)}

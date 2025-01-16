@@ -1,6 +1,6 @@
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-from work_with_database_MongoDB.config import PASSWORD_MONGODB, LOGIN_MONGODB
+from AI_managers_sales_toys.work_with_database_MongoDB.config import PASSWORD_MONGODB, LOGIN_MONGODB
 
 
 uri = f"mongodb+srv://{LOGIN_MONGODB}:{PASSWORD_MONGODB}@cluster0.o7x8l.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"

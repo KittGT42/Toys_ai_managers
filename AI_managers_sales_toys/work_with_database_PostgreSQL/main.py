@@ -9,7 +9,7 @@ from AI_managers_sales_toys.work_with_database_PostgreSQL.database import Databa
 
 db_order = DatabaseOrder()
 db_order.insert_order(
-    user_id=3,
+    user_id=333344552,
     delivery_address="123 Main St, Anytown, USA",
     products_data=[
         {"article": 'PR2502375', "quantity": 2},
