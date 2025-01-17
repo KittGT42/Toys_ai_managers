@@ -5,22 +5,24 @@ from openai import OpenAI
 import json
 import asyncio
 from datetime import datetime, timedelta
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, Set
 from AI_managers_sales_toys.work_with_telegram.utils import configure_logging
 from AI_managers_sales_toys.work_with_telegram.work_with_telegram_bot.telegram_bot_handler import send_telegram_message
 from AI_managers_sales_toys.work_with_database_MongoDB.mongodb_messages import Messages
 from AI_managers_sales_toys.work_with_database_PostgreSQL.database import DatabaseUser, DatabaseOrder
 
-# Ініціалізація баз даних
 user_db = DatabaseUser()
 order_db = DatabaseOrder()
+
+
 db_for_messages = Messages('messages_db', 'messages_tg')
 db_for_thread = Messages('threads_ai_id_db', 'threads_ai')
 
-# Налаштування
+# Завантажуємо змінні середовища
 load_dotenv()
 logger = configure_logging()
 
+# Отримуємо значення зі змінних середовища
 API_ID = os.getenv('TELEGRAM_API_ID')
 API_HASH = os.getenv('TELEGRAM_API_HASH')
 PHONE_NUMBER = os.getenv('PHONE_NUMBER')
@@ -28,79 +30,40 @@ OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 ASSISTANT_ID = os.getenv('ASSISTANT_ID_telegram_bot_sale_toys')
 ADMIN_USER_ID = int(os.getenv('ADMIN_USER_ID'))
 
-# Ініціалізація клієнтів
+class Thread:
+    def __init__(self, new_thread_id):
+        self.id = new_thread_id
+
+
+# Створюємо клієнт Telegram
 client = TelegramClient('session', API_ID, API_HASH)
+
+# Створюємо клієнт OpenAI
 openai_client = OpenAI(api_key=OPENAI_API_KEY)
 
-
-async def wait_for_run_completion(thread_id: str, run_id: str, timeout_seconds: int = 60) -> Any:
-    """Очікування завершення run з таймаутом"""
-    start_time = datetime.now()
-    timeout = timedelta(seconds=timeout_seconds)
-
-    logger.info(f"Початок очікування завершення run {run_id}")
-
-    while (datetime.now() - start_time) < timeout:
-        try:
-            current_run = openai_client.beta.threads.runs.retrieve(
-                thread_id=thread_id,
-                run_id=run_id
-            )
-
-            logger.info(f"Run {run_id} статус: {current_run.status}")
-
-            if current_run.status == 'requires_action':
-                logger.info(f"Run {run_id} потребує дій, обробляємо...")
-                return current_run
-
-            if current_run.status in ['completed', 'failed', 'expired']:
-                logger.info(f"Run {run_id} завершено зі статусом: {current_run.status}")
-                return current_run
-
-            await asyncio.sleep(2)
-
-        except Exception as e:
-            logger.error(f"Помилка при перевірці статусу run: {e}")
-            await asyncio.sleep(2)
-
-    try:
-        logger.warning(f"Таймаут для run {run_id}, спроба скасування...")
-        openai_client.beta.threads.runs.cancel(
-            thread_id=thread_id,
-            run_id=run_id
-        )
-    except Exception as e:
-        logger.error(f"Помилка при скасуванні run: {e}")
-
-    raise TimeoutError(f"Run {run_id} не завершився протягом {timeout_seconds} секунд")
-
-
-async def cleanup_existing_runs(thread_id: str) -> None:
-    """Очищення всіх активних run в треді"""
-    try:
-        runs = openai_client.beta.threads.runs.list(thread_id=thread_id)
-        for run in runs.data:
-            if run.status in ['in_progress', 'requires_action']:
-                try:
-                    openai_client.beta.threads.runs.cancel(
-                        thread_id=thread_id,
-                        run_id=run.id
-                    )
-                    logger.info(f"Скасовано run {run.id} в треді {thread_id}")
-                except Exception as e:
-                    logger.error(f"Помилка при скасуванні run {run.id}: {e}")
-    except Exception as e:
-        logger.error(f"Помилка при очищенні runs: {e}")
-
+# async def sent_data_for_order(user_name, user_phone, user_address, name, price, article, user_id):
+#     message = (f"ПІБ: {user_name}\nТелефон: {user_phone}\nАдреса: {user_address}"
+#                f"\nТовар: {name}\nЦіна: {price}\nАртикул: {article}"f"")
+#
+#     # await asyncio.to_thread(user_db.insert_user(user_id=int(user_id), full_name=user_name, phone_number=user_phone,))
+#
+#     order_data = {
+#                 'user_id': int(user_id),
+#                 'full_name': user_name,
+#                 'product_name': name,
+#                 'price': float(price[:-4]),
+#                 'delivery_address': user_address
+#             }
+#     return send_telegram_message(message)
 
 async def sent_data_for_order(
-    user_name: str,
-    user_phone: str,
-    user_address: str,
-    name: str,
-    price: str,
-    article: str,
-    user_id: int
+        user_name: str,
+        user_phone: str,
+        user_address: str,
+        name: str,
+        price: str,
+        article: str,
+        user_id: int
 ) -> Dict[str, str]:
     """Обробка замовлення та відправка даних"""
     try:
@@ -115,12 +78,12 @@ async def sent_data_for_order(
 
         # Формування повідомлення для адміністратора
         message = (f"🛍 Нове замовлення!\n\n"
-                  f"👤 Покупець: {user_name}\n"
-                  f"📱 Телефон: {user_phone}\n"
-                  f"📍 Адреса: {user_address}\n\n"
-                  f"📦 Товар: {name}\n"
-                  f"💰 Ціна: {price}\n"
-                  f"📎 Артикул: {article}")
+                   f"👤 Покупець: {user_name}\n"
+                   f"📱 Телефон: {user_phone}\n"
+                   f"📍 Адреса: {user_address}\n\n"
+                   f"📦 Товар: {name}\n"
+                   f"💰 Ціна: {price}\n"
+                   f"📎 Артикул: {article}")
 
         logger.info(f"Підготовлено повідомлення про замовлення для користувача {user_id}")
 
@@ -146,7 +109,6 @@ async def sent_data_for_order(
         await send_telegram_message(message)
         logger.info("Відправлено повідомлення адміністратору")
 
-        # Повернення успішної відповіді
         return {
             "status": "success",
             "message": "🎉 Дякуємо за ваше замовлення! Наш менеджер зв'яжеться з вами найближчим часом для підтвердження."
@@ -159,114 +121,109 @@ async def sent_data_for_order(
 
 @client.on(events.NewMessage())
 async def message_handler(event):
-    """Обробник повідомлень"""
     user_id = event.sender_id
     user_message = event.message.text.strip()
     sender = await event.get_sender()
     username = sender.username if sender and hasattr(sender, 'username') else "No username"
 
-    # Збереження повідомлення користувача
-    loop = asyncio.get_event_loop()
-    await loop.run_in_executor(None, db_for_messages.add_message_to_tg_db,
-                             username, user_id, 'Telegram', 'user', user_message)
+    await asyncio.to_thread(db_for_messages.add_message_to_tg_db,
+                            username=username,
+                            user_id_tg=user_id,
+                            messenger_name='Telegram',
+                            role='user',
+                            content=user_message)
 
     if user_message.startswith('/'):
         return
 
     try:
-        # Отримання або створення треду
-        thread_data = None
         try:
             thread_data = db_for_thread.search_tread_id(user_id)
+            thread_id = thread_data['thread_id'] if thread_data else None
         except Exception as e:
+            thread_id = None
             logger.error(f'Помилка при отриманні потоку: {e}')
-
-        if not thread_data:
-            thread = openai_client.beta.threads.create()
-            await loop.run_in_executor(None, db_for_thread.update_thread_id, user_id, thread.id)
-            thread_id = thread.id
-            logger.info(f'Створено новий тред: {thread.id}')
+        if thread_id:
+            thread = Thread(thread_id)
+            logger.info(f'Знайдено потік: {thread.id}')
         else:
-            thread_id = thread_data['thread_id']
-            logger.info(f'Знайдено потік: {thread_id}')
-            await cleanup_existing_runs(thread_id)
+            thread = openai_client.beta.threads.create()
+            db_for_thread.add_thread_id(user_id, thread.id)
+            logger.info(f'Створено новий тред: {thread.id}')
+            thread_id = thread.id
 
-        # Додавання повідомлення до треду
         openai_client.beta.threads.messages.create(
             thread_id=thread_id,
             role="user",
             content=user_message
         )
 
-        # Створення та обробка run
         run = openai_client.beta.threads.runs.create(
             thread_id=thread_id,
             assistant_id=ASSISTANT_ID
         )
 
-        try:
-            run = await wait_for_run_completion(thread_id, run.id)
+        while True:
+            run = openai_client.beta.threads.runs.retrieve(
+                thread_id=thread_id,
+                run_id=run.id
+            )
 
             if run.status == 'requires_action':
+                # Обробка виклику функції
                 tool_calls = run.required_action.submit_tool_outputs.tool_calls
                 tool_outputs = []
 
                 for tool_call in tool_calls:
                     if tool_call.function.name == "sent_data_for_order":
-                        try:
-                            function_args = json.loads(tool_call.function.arguments)
-                            result = await sent_data_for_order(
-                                function_args['user_name'],
-                                function_args['user_phone'],
-                                function_args['user_address'],
-                                function_args['name'],
-                                function_args['price'],
-                                function_args['article'],
-                                user_id
-                            )
-                            tool_outputs.append({
-                                "tool_call_id": tool_call.id,
-                                "output": json.dumps(result)
-                            })
-                            logger.info(f"Успішно оброблено tool_call {tool_call.id}")
-                        except Exception as e:
-                            logger.error(f"Помилка в обробці tool_call: {e}")
-                            tool_outputs.append({
-                                "tool_call_id": tool_call.id,
-                                "output": json.dumps({"status": "error", "message": str(e)})
-                            })
+                        function_args = json.loads(tool_call.function.arguments)
 
-                if tool_outputs:
-                    run = openai_client.beta.threads.runs.submit_tool_outputs(
-                        thread_id=thread_id,
-                        run_id=run.id,
-                        tool_outputs=tool_outputs
-                    )
-                    run = await wait_for_run_completion(thread_id, run.id)
+                        # Викликаємо функцію з отриманими аргументами
+                        await sent_data_for_order(
+                            function_args['user_name'],
+                            function_args['user_phone'],
+                            function_args['user_address'],
+                            function_args['name'],
+                            function_args['price'],
+                            function_args['article'],
+                            user_id
 
-            # Отримання відповіді асистента
-            messages = openai_client.beta.threads.messages.list(thread_id=thread_id)
-            assistant_response = messages.data[0].content[0].text.value
+                        )
 
-            # Збереження відповіді асистента
-            await loop.run_in_executor(None, db_for_messages.add_message_to_tg_db,
-                                     username, user_id, 'Telegram', 'assistant', assistant_response)
+                        tool_outputs.append({
+                            "tool_call_id": tool_call.id,
+                            "output": "Order data sent successfully"
+                        })
 
-            # Відправка відповіді користувачу
-            await event.reply(assistant_response)
+                # Відправляємо результати виконання функції назад асистенту
+                run = openai_client.beta.threads.runs.submit_tool_outputs(
+                    thread_id=thread_id,
+                    run_id=run.id,
+                    tool_outputs=tool_outputs
+                )
 
-        except TimeoutError as e:
-            logger.warning(str(e))
-            await event.reply("Вибачте, відповідь займає більше часу ніж очікувалося. Спробуйте повторити запит.")
-            return
+            elif run.status == 'completed':
+                break
 
+            await asyncio.sleep(1)
+
+        messages = openai_client.beta.threads.messages.list(thread_id=thread_id)
+        assistant_response = messages.data[0].content[0].text.value
+
+        await asyncio.to_thread(db_for_messages.add_message_to_tg_db,
+                                username=username,
+                                user_id_tg=user_id,
+                                messenger_name='Telegram',
+                                role='assistant',
+                                content=assistant_response)
+
+        await event.reply(assistant_response)
     except Exception as e:
-        logger.error(f"Помилка при обробці повідомлення: {e}")
+        print(f"Error: {e}")
         await event.reply("Вибачте, сталася помилка при обробці вашого запиту.")
 
 
 async def main():
-    """Головна функція запуску бота"""
     print("Starting Telegram client...")
     await client.start(phone=PHONE_NUMBER)
     print("Telegram client started successfully!")
@@ -274,4 +231,6 @@ async def main():
 
 
 if __name__ == '__main__':
+    import asyncio
+
     asyncio.run(main())
