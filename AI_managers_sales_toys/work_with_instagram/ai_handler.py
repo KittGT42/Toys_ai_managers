@@ -1,11 +1,18 @@
 import json
 from openai import OpenAI
-from work_with_instagram.config import OPENAI_API_KEY, ASSISTANT_ID
-from work_with_instagram.utils import configure_logging
+from AI_managers_sales_toys.work_with_instagram.config import OPENAI_API_KEY, ASSISTANT_ID_instagram
+from AI_managers_sales_toys.work_with_instagram.utils import configure_logging
 import traceback
-from work_with_database_MongoDB.mongodb_messages import Messages
+from AI_managers_sales_toys.work_with_database_MongoDB.mongodb_messages import Messages
 import asyncio
-from work_with_telegram.work_with_telegram_bot.telegram_bot_handler import send_telegram_message
+from AI_managers_sales_toys.work_with_telegram.work_with_telegram_bot.telegram_bot_handler import send_telegram_message
+from AI_managers_sales_toys.work_with_instagram.utils import get_product_info
+from AI_managers_sales_toys.work_with_database_PostgreSQL.database import DatabaseUser, DatabaseOrder, DatabaseProduct
+
+
+user_db = DatabaseUser()
+order_db = DatabaseOrder()
+threads_ai_id_db = Messages('threads_ai_id_db', 'threads_ai')
 
 logger = configure_logging()
 client_openai = OpenAI(api_key=OPENAI_API_KEY)
@@ -16,31 +23,65 @@ class Thread:
         self.id = new_thread_id
 
 
-async def sent_data_for_order(user_name, user_phone, user_address, product_name, product_price, product_description,
-                              product_link):
+async def sent_data_for_order(user_name: str,
+        user_phone: str,
+        user_address: str,
+        name: str,
+        price: str,
+        article: str,
+        user_id: str):
     try:
-        message = (f"ПІБ: {user_name}\nТелефон: {user_phone}\nАдреса: {user_address}"
-                   f"\nТовар: {product_name}\nЦіна: {product_price}\nОпис: {product_description}\nПосилання: {product_link}")
+        user_phone = user_phone.replace(' ', '').replace('(', '').replace(')', '')
+        if not user_phone.startswith('+'):
+            user_phone = '+38' + user_phone
 
-        success = await asyncio.to_thread(send_telegram_message, message)
+        # Валідація даних
+        if not all([user_name, user_phone, user_address, name, price, article]):
+            raise ValueError("Відсутні обов'язкові поля замовлення")
 
-        if not success:
-            raise Exception("Failed to send message to Telegram")
+        # Збереження даних користувача
+        if await asyncio.to_thread(user_db.select_user, user_id=user_id) is None:
+            await asyncio.to_thread(user_db.insert_user, user_id, user_name, user_phone)
+
+        products_data = [{"article": article, "quantity": 1}]
+        await asyncio.to_thread(order_db.insert_order, user_id, user_address, products_data)
+
+        message = (f"🛍 Нове замовлення!\n\n"
+                   f"👤 Покупець: {user_name}\n"
+                   f"📱 Телефон: {user_phone}\n"
+                   f"📍 Адреса: {user_address}\n\n"
+                   f"📦 Товар: {name}\n"
+                   f"💰 Ціна: {price}\n"
+                   f"📎 Артикул: {article}")
+
+        # Відправка повідомлення без await
+        message_sent = send_telegram_message(message)
+
+        if not message_sent:
+            raise Exception("Помилка при відправці повідомлення в Telegram")
+
+        logger.info(f"Замовлення успішно оброблено для користувача {user_id}")
+
+        return {
+            "status": "success",
+            "message": "🎉 Дякуємо за ваше замовлення! Наш менеджер зв'яжеться з вами найближчим часом для підтвердження."
+        }
 
     except Exception as e:
-        logger.error(f"Помилка при відправці замовлення: {str(e)}")
-        raise
+        error_message = str(e)
+        logger.error(f"Помилка при обробці замовлення для користувача {user_id}: {error_message}")
+        return {
+            "status": "error",
+            "message": f"Помилка при обробці замовлення: {error_message}"
+        }
 
 
-db = Messages('threads_ai_id_db', 'threads_ai')
-
-
-async def process_with_assistant(message: str, username: str) -> str:
+async def process_with_assistant(message: str, contact_id: str) -> str:
     try:
         logger.info(f'Початок обробки повідомлення: {message}')
 
         try:
-            thread_data = db.search_tread_id(username)
+            thread_data = threads_ai_id_db.search_tread_id(contact_id)
             thread_id = thread_data['thread_id'] if thread_data else None
         except Exception as e:
             thread_id = None
@@ -51,7 +92,7 @@ async def process_with_assistant(message: str, username: str) -> str:
             logger.info(f'Знайдено потік: {thread.id}')
         else:
             thread = client_openai.beta.threads.create()
-            db.add_thread_id(username, thread.id)
+            threads_ai_id_db.add_thread_id(contact_id, thread.id)
             logger.info(f'Створено новий тред: {thread.id}')
 
         client_openai.beta.threads.messages.create(
@@ -63,7 +104,7 @@ async def process_with_assistant(message: str, username: str) -> str:
 
         run = client_openai.beta.threads.runs.create(
             thread_id=thread.id,
-            assistant_id=ASSISTANT_ID
+            assistant_id=ASSISTANT_ID_instagram
         )
         logger.info(f'Запущено асистента: {run.id}')
 
@@ -78,21 +119,29 @@ async def process_with_assistant(message: str, username: str) -> str:
                 tool_outputs = []
 
                 for tool_call in tool_calls:
+                    function_args = json.loads(tool_call.function.arguments)
                     if tool_call.function.name == "sent_data_for_order":
-                        function_args = json.loads(tool_call.function.arguments)
                         await sent_data_for_order(
-                            user_name=function_args['user_name'],
-                            user_phone=function_args['user_phone'],
-                            user_address=function_args['user_address'],
-                            product_name=function_args['product_name'],
-                            product_price=function_args['product_price'],
-                            product_description=function_args['product_description'],
-                            product_link=function_args['product_link']
+                            function_args['user_name'],
+                            function_args['user_phone'],
+                            function_args['user_address'],
+                            function_args['name'],
+                            function_args['price'],
+                            function_args['article'],
+                            user_id=contact_id
                         )
 
                         tool_outputs.append({
                             "tool_call_id": tool_call.id,
                             "output": "Order data sent successfully"
+                        })
+                    elif tool_call.function.name == "get_product_info":
+                        result = await get_product_info(function_args['article'])
+                        logger.debug(f"Результат get_product_info: {result}")
+                        output = json.dumps(result)
+                        tool_outputs.append({
+                            "tool_call_id": tool_call.id,
+                            "output": output
                         })
 
                 run = client_openai.beta.threads.runs.submit_tool_outputs(
