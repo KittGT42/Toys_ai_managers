@@ -1,5 +1,5 @@
 from typing import List
-from work_with_instagram.utils import configure_logging
+from AI_managers_sales_toys.work_with_instagram.utils import configure_logging
 
 logger = configure_logging()
 

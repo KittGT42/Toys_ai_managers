@@ -3,9 +3,6 @@ from dotenv import load_dotenv
 from telethon import TelegramClient, events
 from openai import OpenAI
 import json
-import asyncio
-from datetime import datetime, timedelta
-from typing import Optional, Dict, Any, Set
 from AI_managers_sales_toys.work_with_telegram.utils import configure_logging
 from AI_managers_sales_toys.work_with_telegram.work_with_telegram_bot.telegram_bot_handler import send_telegram_message
 from AI_managers_sales_toys.work_with_database_MongoDB.mongodb_messages import Messages
@@ -27,7 +24,7 @@ API_ID = os.getenv('TELEGRAM_API_ID')
 API_HASH = os.getenv('TELEGRAM_API_HASH')
 PHONE_NUMBER = os.getenv('PHONE_NUMBER')
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
-ASSISTANT_ID = os.getenv('ASSISTANT_ID_telegram_bot_sale_toys')
+ASSISTANT_ID = 'asst_6RG5VMCJbdhTUH8DrwrmPqN3'
 ADMIN_USER_ID = int(os.getenv('ADMIN_USER_ID'))
 
 class Thread:
@@ -41,82 +38,20 @@ client = TelegramClient('session', API_ID, API_HASH)
 # Створюємо клієнт OpenAI
 openai_client = OpenAI(api_key=OPENAI_API_KEY)
 
-# async def sent_data_for_order(user_name, user_phone, user_address, name, price, article, user_id):
-#     message = (f"ПІБ: {user_name}\nТелефон: {user_phone}\nАдреса: {user_address}"
-#                f"\nТовар: {name}\nЦіна: {price}\nАртикул: {article}"f"")
-#
-#     # await asyncio.to_thread(user_db.insert_user(user_id=int(user_id), full_name=user_name, phone_number=user_phone,))
-#
-#     order_data = {
-#                 'user_id': int(user_id),
-#                 'full_name': user_name,
-#                 'product_name': name,
-#                 'price': float(price[:-4]),
-#                 'delivery_address': user_address
-#             }
-#     return send_telegram_message(message)
+async def sent_data_for_order(user_name, user_phone, user_address, name, price, article, user_id):
+    message = (f"ПІБ: {user_name}\nТелефон: {user_phone}\nАдреса: {user_address}"
+               f"\nТовар: {name}\nЦіна: {price}\nАртикул: {article}"f"")
 
-async def sent_data_for_order(
-        user_name: str,
-        user_phone: str,
-        user_address: str,
-        name: str,
-        price: str,
-        article: str,
-        user_id: int
-) -> Dict[str, str]:
-    """Обробка замовлення та відправка даних"""
-    try:
-        # Форматування телефону
-        user_phone = user_phone.replace(' ', '').replace('(', '').replace(')', '')
-        if not user_phone.startswith('+'):
-            user_phone = '+38' + user_phone
+    # await asyncio.to_thread(user_db.insert_user(user_id=int(user_id), full_name=user_name, phone_number=user_phone,))
 
-        # Форматування ціни
-        if not price.endswith('грн'):
-            price = f"{price} грн"
-
-        # Формування повідомлення для адміністратора
-        message = (f"🛍 Нове замовлення!\n\n"
-                   f"👤 Покупець: {user_name}\n"
-                   f"📱 Телефон: {user_phone}\n"
-                   f"📍 Адреса: {user_address}\n\n"
-                   f"📦 Товар: {name}\n"
-                   f"💰 Ціна: {price}\n"
-                   f"📎 Артикул: {article}")
-
-        logger.info(f"Підготовлено повідомлення про замовлення для користувача {user_id}")
-
-        # Збереження користувача
-        if user_db.select_user(user_id=int(user_id)) is None:
-            loop = asyncio.get_event_loop()
-            await loop.run_in_executor(None, user_db.insert_user, int(user_id), user_name, user_phone)
-            logger.info(f"Збережено нового користувача: {user_id}")
-
-        # Збереження замовлення
-        products_data = [{"article": article, "quantity": 1}]
-        loop = asyncio.get_event_loop()
-        await loop.run_in_executor(
-            None,
-            order_db.insert_order,
-            int(user_id),
-            user_address,
-            products_data
-        )
-        logger.info(f"Збережено замовлення для користувача {user_id}")
-
-        # Відправка повідомлення адміністратору
-        await send_telegram_message(message)
-        logger.info("Відправлено повідомлення адміністратору")
-
-        return {
-            "status": "success",
-            "message": "🎉 Дякуємо за ваше замовлення! Наш менеджер зв'яжеться з вами найближчим часом для підтвердження."
-        }
-
-    except Exception as e:
-        logger.error(f"Помилка при обробці замовлення: {e}")
-        return {"status": "error", "message": str(e)}
+    order_data = {
+                'user_id': int(user_id),
+                'full_name': user_name,
+                'product_name': name,
+                'price': float(price[:-4]),
+                'delivery_address': user_address
+            }
+    return send_telegram_message(message)
 
 
 @client.on(events.NewMessage())

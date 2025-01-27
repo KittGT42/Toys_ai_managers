@@ -1,11 +1,14 @@
+import random
 from decimal import Decimal
 import datetime
 from sqlalchemy import create_engine, text, select, func, cast, Integer
 from AI_managers_sales_toys.work_with_database_PostgreSQL.config import settings
 from sqlalchemy.orm import Session, sessionmaker
-from AI_managers_sales_toys.work_with_database_PostgreSQL.models import Order, Base, User, Product, OrderStatus, order_products
+from AI_managers_sales_toys.work_with_database_PostgreSQL.models import Order, Base, User, Product, OrderStatus, \
+    order_products, Gender
 from AI_managers_sales_toys.work_with_database_PostgreSQL.utils.main_create_article import ArticleGenerator
 from AI_managers_sales_toys.work_with_database_PostgreSQL.utils.main_create_number_order import OrderNumberGenerator
+from sqlalchemy import or_
 
 sync_engine = create_engine(
    url=settings.db_url_psycopg2,
@@ -25,7 +28,7 @@ class DatabaseUser:
        self.engine = sync_engine
        self.session = session
 
-   def insert_user(self, user_id: int, full_name: str, phone_number: str):
+   def insert_user(self, user_id: str, full_name: str, phone_number: str):
        current_time = datetime.datetime.now(datetime.timezone.utc)
        first_data = User(
            user_id=user_id,
@@ -42,7 +45,7 @@ class DatabaseUser:
                session_obj.rollback()
                raise e
 
-   def select_user(self, user_id: int):
+   def select_user(self, user_id: str):
        with self.session() as session_obj:
            user = session_obj.query(User).filter(User.user_id == user_id).first()
            return user
@@ -93,7 +96,7 @@ class DatabaseOrder:
        self.engine = sync_engine
        self.session = session
 
-   def insert_order(self, user_id: int, delivery_address: str, products_data: list[dict]):
+   def insert_order(self, user_id, delivery_address: str, products_data: list[dict]):
        with self.session() as session_obj:
            try:
                # Знаходимо user.id за user_id
@@ -249,6 +252,81 @@ class DatabaseProduct:
        with self.session() as session_obj:
            product = session_obj.query(Product).filter(Product.article == article).first()
            return product
+
+   def select_product_for_inst_with_stock_article(self, article: str):
+       with self.session() as session_obj:
+           product = session_obj.query(Product).filter(func.lower(Product.stock_article) == article.lower()).first()
+           return product
+
+   def select_product_by_different_category(self, age_year, age_month, gender, main_product_category, budget):
+       with self.session() as session_obj:
+           # Конвертуємо вхідні параметри в потрібні типи
+           age_year = float(age_year) if isinstance(age_year, str) else age_year
+           age_month = float(age_month) if isinstance(age_month, str) else age_month
+           budget = float(budget) if isinstance(budget, str) else budget
+           if age_year > 0:
+               base_query = session_obj.query(Product).filter(
+                   Product.age_category_years <= age_year,
+                   Product.gender.in_([gender, 'Унісекс']),
+                   Product.price <= budget
+               )
+
+               if main_product_category and main_product_category != 'toys':
+                   # Видаляємо закінчення для кращого пошуку
+                   search_term = main_product_category.rstrip('иіїа')  # Прибираємо типові закінчення
+                   search_pattern = f"%{search_term}%"
+
+                   base_query = base_query.filter(
+                       or_(
+                           Product.name.ilike(search_pattern),
+                           Product.description.ilike(search_pattern),
+                           # Додаткові варіанти пошуку для різних форм слова
+                           Product.name.ilike(f"%{search_term}и%"),
+                           Product.name.ilike(f"%{search_term}а%"),
+                           Product.name.ilike(f"%{search_term}ів%"),
+                           Product.description.ilike(f"%{search_term}и%"),
+                           Product.description.ilike(f"%{search_term}а%"),
+                           Product.description.ilike(f"%{search_term}ів%")
+                       )
+                   )
+
+               products = base_query.all()
+
+               if len(products) > 3:
+                   return random.sample(products, 3)
+               return products
+           if age_month > 0:
+               base_query = session_obj.query(Product).filter(
+                   Product.age_category_years <= age_month,
+                   Product.gender.in_([gender, 'Унісекс']),
+                   Product.price <= budget
+               )
+
+               if main_product_category and main_product_category != 'toys':
+                   # Видаляємо закінчення для кращого пошуку
+                   search_term = main_product_category.rstrip('иіїа')  # Прибираємо типові закінчення
+                   search_pattern = f"%{search_term}%"
+
+                   base_query = base_query.filter(
+                       or_(
+                           Product.name.ilike(search_pattern),
+                           Product.description.ilike(search_pattern),
+                           # Додаткові варіанти пошуку для різних форм слова
+                           Product.name.ilike(f"%{search_term}и%"),
+                           Product.name.ilike(f"%{search_term}а%"),
+                           Product.name.ilike(f"%{search_term}ів%"),
+                           Product.description.ilike(f"%{search_term}и%"),
+                           Product.description.ilike(f"%{search_term}а%"),
+                           Product.description.ilike(f"%{search_term}ів%")
+                       )
+                   )
+
+               products = base_query.all()
+
+               if len(products) > 3:
+                   return random.sample(products, 3)
+               return products
+
 
    def select_products(self):
        with self.session() as session_obj:

@@ -1,7 +1,7 @@
 from datetime import datetime
 import requests
 from typing import Dict, Any
-from work_with_instagram.utils import configure_logging
+from AI_managers_sales_toys.work_with_instagram.utils import configure_logging
 
 logger = configure_logging()
 

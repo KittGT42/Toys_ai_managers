@@ -17,6 +17,7 @@ class Product(models.Model):
     quantity = models.IntegerField(default=0, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    age_category_years = models.FloatField(null=True, db_index=True)
 
     class Meta:
         indexes = [

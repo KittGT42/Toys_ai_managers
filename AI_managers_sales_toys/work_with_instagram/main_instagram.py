@@ -1,11 +1,11 @@
 from flask import Flask, request, jsonify
-from work_with_instagram.config import SANDPULS_SECRET
-from work_with_instagram.utils import configure_logging, verify_sandpuls_signature
-from work_with_instagram.ai_handler import process_with_assistant
-from work_with_instagram.sandpuls_handler import send_message_to_sandpuls
+from AI_managers_sales_toys.work_with_instagram.config import SANDPULS_SECRET
+from AI_managers_sales_toys.work_with_instagram.utils import configure_logging, verify_sandpuls_signature
+from AI_managers_sales_toys.work_with_instagram.ai_handler import process_with_assistant
+from AI_managers_sales_toys.work_with_instagram.sandpuls_handler import send_message_to_sandpuls
 import traceback
 from datetime import datetime
-from work_with_database_MongoDB.mongodb_messages import Messages
+from AI_managers_sales_toys.work_with_database_MongoDB.mongodb_messages import Messages
 import asyncio
 
 logger = configure_logging()
@@ -59,7 +59,7 @@ async def handle_webhook():
         logger.info(f'Підготовка до обробки повідомлення через OpenAI')
 
         try:
-            ai_response = await process_with_assistant(message, username)
+            ai_response = await process_with_assistant(message, contact_id)
             logger.info(f'Отримано відповідь від AI: {ai_response}')
 
             await asyncio.to_thread(db.add_message_to_inst_db,

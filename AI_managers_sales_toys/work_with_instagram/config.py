@@ -34,7 +34,7 @@ SANDPULS_SECRET = get_env_variable('SAND_PULSE_SECRET')
 
 # Конфігурація для OpenAI
 OPENAI_API_KEY = get_env_variable('OPENAI_API_KEY')
-ASSISTANT_ID = get_env_variable('ASSISTANT_ID_telegram_bot_sale_animals_items')
+ASSISTANT_ID_instagram = get_env_variable('ASSISTANT_ID_instagram')
 
 # Режим додатку
 APP_ENV = get_env_variable('APP_ENV', required=False) or 'development'

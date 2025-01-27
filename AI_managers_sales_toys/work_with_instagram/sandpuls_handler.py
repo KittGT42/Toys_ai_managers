@@ -1,8 +1,8 @@
 import requests
 from typing import Optional, List
-from work_with_instagram.utils import configure_logging
-from work_with_instagram.message_handler import MessageHandler
-from work_with_instagram.config import SANDPULS_SECRET
+from AI_managers_sales_toys.work_with_instagram.utils import configure_logging
+from AI_managers_sales_toys.work_with_instagram.message_handler import MessageHandler
+from AI_managers_sales_toys.work_with_instagram.config import SANDPULS_SECRET
 
 logger = configure_logging()
 

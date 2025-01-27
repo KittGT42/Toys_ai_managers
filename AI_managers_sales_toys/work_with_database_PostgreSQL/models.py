@@ -135,6 +135,7 @@ class Product(Base):
     created_at: Mapped[created_at]
     updated_at: Mapped[updated_at]
     quantity: Mapped[int] = mapped_column(nullable=True, default=0)
+    age_category_years: Mapped[float] = mapped_column(nullable=True)
 
     # Додаємо зв'язок з ордерами
     orders: Mapped[List["Order"]] = relationship(

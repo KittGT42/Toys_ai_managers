@@ -27,5 +27,5 @@ class Messages:
     def add_thread_id(self, username, thread_id):
         self.collection.insert_one({'_id': username, 'thread_id': thread_id})
 
-    def search_tread_id(self, username):
-        return self.collection.find_one({'_id': username}, {'thread_id': 1})
+    def search_tread_id(self, contact_id):
+        return self.collection.find_one({'_id': contact_id}, {'thread_id': 1})
