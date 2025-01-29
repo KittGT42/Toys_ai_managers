@@ -1,5 +1,5 @@
 import asyncio
-from work_with_telegram.main import main as main_tg
+from work_with_telegram.main_old import main as main_tg
 from work_with_instagram.main import main as main_inst
 
 
