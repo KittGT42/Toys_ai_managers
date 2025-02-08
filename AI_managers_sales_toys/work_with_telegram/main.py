@@ -21,7 +21,7 @@ API_ID = os.getenv('TELEGRAM_API_ID')
 API_HASH = os.getenv('TELEGRAM_API_HASH')
 PHONE_NUMBER = os.getenv('PHONE_NUMBER')
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
-ASSISTANT_ID = 'asst_AfkpQMAiugaOGrp12k09uFpu'
+ASSISTANT_ID = 'asst_wc7I7XK5BLFe0ZMzbduchn8W'
 ADMIN_USER_ID = int(os.getenv('ADMIN_USER_ID'))
 
 # Таймаути та ретраї
@@ -52,58 +52,6 @@ class Thread:
     def __init__(self, new_thread_id):
         self.id = new_thread_id
 
-
-async def get_products_by_category(age_year, age_month, gender, main_product_category, budget):
-    try:
-        # Конвертація типів
-        if age_year != '0':
-            age_year = float(age_year)
-        if age_month != '0':
-            age_month = float(age_month) / 12
-        if budget != '0':
-            budget = float(budget)
-
-        # Використовуємо asyncio.to_thread для синхронного DB запиту
-        products_from_db = await asyncio.to_thread(
-            product_db.select_product_by_different_category,
-            age_year=age_year,
-            age_month=age_month,
-            gender=gender,
-            main_product_category=main_product_category,
-            budget=budget
-        )
-        result = []
-
-        for product in products_from_db:
-           data = {
-                "name": product.name,
-                "price": str(product.price),
-                "article": product.article,
-                "age_category": getattr(product, 'age_category', ''),
-                "color": getattr(product, 'color', ''),
-                "material": getattr(product, 'material', ''),
-                "description": getattr(product, 'description', ''),
-                "main_image": getattr(product, 'main_image', ''),
-                "gender": getattr(product, 'gender', ''),
-                "product_status": getattr(product, 'product_status', ''),
-                "product_type": getattr(product, 'product_type', ''),
-                "quantity": product.quantity,
-                "images_urls": getattr(product, 'images_urls', [])
-            }
-           print(data)
-           result.append(data)
-
-        return {
-            "status": "success",
-            "data": result
-        }
-
-    except Exception as e:
-        logger.error(f"Помилка при отриманні товарів: {str(e)}")
-        return {
-            "status": "error",
-            "message": f"Помилка отримання даних: {str(e)}"
-        }
 
 def validate_tool_output(output: dict) -> bool:
     """Валідація вихідних даних інструментів"""
@@ -147,7 +95,10 @@ async def get_product_info(article: str) -> dict:
             "description": getattr(product, 'description', ''),
             "main_image": getattr(product, 'main_image', ''),
             "gender": getattr(product, 'gender', ''),
-
+            "product_status": getattr(product, 'product_status', ''),
+            "product_type": getattr(product, 'product_type', ''),
+            "quantity": product.quantity,
+            "images_urls": getattr(product, 'images_urls', [])
         }
 
         logger.debug(f"Підготовлені дані товару: {product_data}")
@@ -172,7 +123,7 @@ async def sent_data_for_order(
         name: str,
         price: str,
         article: str,
-        user_id: str
+        user_id: int
 ) -> Dict[str, str]:
     """Обробка замовлення та відправка даних"""
     try:
@@ -188,12 +139,12 @@ async def sent_data_for_order(
             raise ValueError("Відсутні обов'язкові поля замовлення")
 
         # Збереження даних користувача
-        if await asyncio.to_thread(user_db.select_user, user_id=user_id) is None:
-            await asyncio.to_thread(user_db.insert_user, user_id, user_name, user_phone)
+        if await asyncio.to_thread(user_db.select_user, user_id=int(user_id)) is None:
+            await asyncio.to_thread(user_db.insert_user, int(user_id), user_name, user_phone)
 
         # Збереження замовлення
         products_data = [{"article": article, "quantity": 1}]
-        await asyncio.to_thread(order_db.insert_order, user_id, user_address, products_data)
+        await asyncio.to_thread(order_db.insert_order, int(user_id), user_address, products_data)
 
         # Формування повідомлення
         message = (f"🛍 Нове замовлення!\n\n"
@@ -226,6 +177,7 @@ async def sent_data_for_order(
 
 
 async def process_tool_calls(thread_id: str, run_id: str, tool_calls: list, user_id) -> list:
+    """Покращена обробка викликів інструментів з розширеним логуванням"""
     tool_outputs = []
 
     for tool_call in tool_calls:
@@ -234,25 +186,11 @@ async def process_tool_calls(thread_id: str, run_id: str, tool_calls: list, user
             function_args = json.loads(tool_call.function.arguments)
             logger.debug(f"Аргументи функції: {function_args}")
 
-            if tool_call.function.name == "get_products_by_category":
-                result = await get_products_by_category(
-                    function_args['age_year'],
-                    function_args['age_month'],
-                    function_args['gender'],
-                    function_args['main_product_category'],
-                    function_args['budget'],
-                )
-                logger.debug(f"Результат get_products_by_category: {result}")
-                output = json.dumps(result)
-                tool_outputs.append({
-                    "tool_call_id": tool_call.id,
-                    "output": output
-                })
-
-            elif tool_call.function.name == "get_product_info":
+            if tool_call.function.name == "get_product_info":
                 result = await get_product_info(function_args['article'])
                 logger.debug(f"Результат get_product_info: {result}")
                 output = json.dumps(result)
+                logger.debug(f"Форматований JSON output: {output}")
                 tool_outputs.append({
                     "tool_call_id": tool_call.id,
                     "output": output
@@ -260,15 +198,17 @@ async def process_tool_calls(thread_id: str, run_id: str, tool_calls: list, user
 
             elif tool_call.function.name == "sent_data_for_order":
                 result = await sent_data_for_order(
-                    function_args['user_name'],
-                    function_args['user_phone'],
-                    function_args['user_address'],
-                    function_args['name'],
-                    function_args['price'],
-                    function_args['article'],
-                    user_id)
+                            function_args['user_name'],
+                            function_args['user_phone'],
+                            function_args['user_address'],
+                            function_args['name'],
+                            function_args['price'],
+                            function_args['article'],
+                            user_id)
+
                 logger.debug(f"Результат sent_data_for_order: {result}")
                 output = json.dumps(result)
+                logger.debug(f"Форматований JSON output: {output}")
                 tool_outputs.append({
                     "tool_call_id": tool_call.id,
                     "output": output
@@ -287,6 +227,7 @@ async def process_tool_calls(thread_id: str, run_id: str, tool_calls: list, user
             })
 
     logger.info(f"Підготовлено {len(tool_outputs)} tool_outputs")
+    logger.debug(f"Фінальні tool_outputs: {tool_outputs}")
     return tool_outputs
 
 
@@ -330,7 +271,7 @@ async def handle_run_status(run, thread_id: str, event, user_id) -> Optional[boo
 
 @client.on(events.NewMessage())
 async def message_handler(event):
-    user_id = str(event.sender_id)
+    user_id = event.sender_id
     user_message = event.message.text.strip()
     sender = await event.get_sender()
     username = sender.username if sender and hasattr(sender, 'username') else "No username"
