@@ -279,14 +279,13 @@ class DatabaseProduct:
                    base_query = base_query.filter(
                        or_(
                            Product.name.ilike(search_pattern),
-                           Product.description.ilike(search_pattern),
-                           # Додаткові варіанти пошуку для різних форм слова
                            Product.name.ilike(f"%{search_term}и%"),
                            Product.name.ilike(f"%{search_term}а%"),
                            Product.name.ilike(f"%{search_term}ів%"),
-                           Product.description.ilike(f"%{search_term}и%"),
-                           Product.description.ilike(f"%{search_term}а%"),
-                           Product.description.ilike(f"%{search_term}ів%")
+                           # Product.description.ilike(search_pattern),
+                           # Product.description.ilike(f"%{search_term}и%"),
+                           # Product.description.ilike(f"%{search_term}а%"),
+                           # Product.description.ilike(f"%{search_term}ів%")
                        )
                    )
 
