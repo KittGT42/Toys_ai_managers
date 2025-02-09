@@ -162,3 +162,7 @@ cython_debug/
 .idea/
 *.session
 /AI_Manager_Telegram/Tg_bot_for_pay_subscribe_wayforpay/sales-ai-manager-animals-tems-16214ffd1364.json
+
+.DS_Store
+**/.DS_Store
+*.session-journal
