@@ -1,0 +1,59 @@
+{
+  "total_products": 2375,
+  "parts": {
+    "part_1": {
+      "filename": "products_part_1.json",
+      "products_count": 264,
+      "start_article": "PR2500001",
+      "end_article": "PR2500241"
+    },
+    "part_2": {
+      "filename": "products_part_2.json",
+      "products_count": 264,
+      "start_article": "PR2500242",
+      "end_article": "PR2500508"
+    },
+    "part_3": {
+      "filename": "products_part_3.json",
+      "products_count": 264,
+      "start_article": "PR2500513",
+      "end_article": "PR2500772"
+    },
+    "part_4": {
+      "filename": "products_part_4.json",
+      "products_count": 264,
+      "start_article": "PR2500773",
+      "end_article": "PR2501037"
+    },
+    "part_5": {
+      "filename": "products_part_5.json",
+      "products_count": 264,
+      "start_article": "PR2501028",
+      "end_article": "PR2501296"
+    },
+    "part_6": {
+      "filename": "products_part_6.json",
+      "products_count": 264,
+      "start_article": "PR2501297",
+      "end_article": "PR2501561"
+    },
+    "part_7": {
+      "filename": "products_part_7.json",
+      "products_count": 264,
+      "start_article": "PR2501562",
+      "end_article": "PR2501834"
+    },
+    "part_8": {
+      "filename": "products_part_8.json",
+      "products_count": 264,
+      "start_article": "PR2501835",
+      "end_article": "PR2502107"
+    },
+    "part_9": {
+      "filename": "products_part_9.json",
+      "products_count": 263,
+      "start_article": "PR2502108",
+      "end_article": "PR2500006"
+    }
+  }
+}
