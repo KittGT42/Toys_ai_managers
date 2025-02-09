@@ -1,5 +1,5 @@
 import asyncio
-from AI_managers_sales_toys.work_with_telegram.main_old import main as main_tg
+from AI_managers_sales_toys.work_with_telegram.main import main as main_tg
 from AI_managers_sales_toys.work_with_instagram.main import main as main_inst
 
 
