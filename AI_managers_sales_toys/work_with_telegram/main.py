@@ -60,10 +60,6 @@ async def get_products_by_category(age_year, age_month, gender, main_product_cat
             age_year = float(age_year)
         if age_month != '0':
             age_month = float(age_month) / 12
-        if gender == 'male':
-            gender = 'Хлопчик'
-        if gender == 'female':
-            gender = 'Дівчинка'
         if budget != '0':
             budget = float(budget)
 
@@ -176,7 +172,7 @@ async def sent_data_for_order(
         name: str,
         price: str,
         article: str,
-        user_id: int
+        user_id: str
 ) -> Dict[str, str]:
     """Обробка замовлення та відправка даних"""
     try:
@@ -192,12 +188,12 @@ async def sent_data_for_order(
             raise ValueError("Відсутні обов'язкові поля замовлення")
 
         # Збереження даних користувача
-        if await asyncio.to_thread(user_db.select_user, user_id=int(user_id)) is None:
-            await asyncio.to_thread(user_db.insert_user, int(user_id), user_name, user_phone)
+        if await asyncio.to_thread(user_db.select_user, user_id=user_id) is None:
+            await asyncio.to_thread(user_db.insert_user, user_id, user_name, user_phone)
 
         # Збереження замовлення
         products_data = [{"article": article, "quantity": 1}]
-        await asyncio.to_thread(order_db.insert_order, int(user_id), user_address, products_data)
+        await asyncio.to_thread(order_db.insert_order, user_id, user_address, products_data)
 
         # Формування повідомлення
         message = (f"🛍 Нове замовлення!\n\n"
@@ -334,7 +330,7 @@ async def handle_run_status(run, thread_id: str, event, user_id) -> Optional[boo
 
 @client.on(events.NewMessage())
 async def message_handler(event):
-    user_id = event.sender_id
+    user_id = str(event.sender_id)
     user_message = event.message.text.strip()
     sender = await event.get_sender()
     username = sender.username if sender and hasattr(sender, 'username') else "No username"
