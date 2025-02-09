@@ -31,7 +31,7 @@ class DatabaseUser:
    def insert_user(self, user_id: str, full_name: str, phone_number: str):
        current_time = datetime.datetime.now(datetime.timezone.utc)
        first_data = User(
-           user_id=user_id,
+           user_id=str(user_id),
            full_name=full_name,
            phone_number=phone_number,
            created_at=current_time,
@@ -109,7 +109,7 @@ class DatabaseOrder:
 
                new_order = Order(
                    order_number=order_number,
-                   user_id=user.id,  # використовуємо user.id
+                   user_id=str(user.id),  # використовуємо user.id
                    delivery_address=delivery_address,
                    status=OrderStatus.NEW.value,
                    created_at=current_time,
@@ -279,14 +279,13 @@ class DatabaseProduct:
                    base_query = base_query.filter(
                        or_(
                            Product.name.ilike(search_pattern),
-                           Product.description.ilike(search_pattern),
-                           # Додаткові варіанти пошуку для різних форм слова
                            Product.name.ilike(f"%{search_term}и%"),
                            Product.name.ilike(f"%{search_term}а%"),
                            Product.name.ilike(f"%{search_term}ів%"),
-                           Product.description.ilike(f"%{search_term}и%"),
-                           Product.description.ilike(f"%{search_term}а%"),
-                           Product.description.ilike(f"%{search_term}ів%")
+                           # Product.description.ilike(search_pattern),
+                           # Product.description.ilike(f"%{search_term}и%"),
+                           # Product.description.ilike(f"%{search_term}а%"),
+                           # Product.description.ilike(f"%{search_term}ів%")
                        )
                    )
 

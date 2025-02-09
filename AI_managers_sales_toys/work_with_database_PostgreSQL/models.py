@@ -50,7 +50,8 @@ order_products = Table(
 class User(Base):
     __tablename__ = 'users_user'
     id: Mapped[int_pk]
-    user_id: Mapped[int] = mapped_column(
+    user_id: Mapped[str] = mapped_column(
+        String(255),
         nullable=False,
         index=True,
         unique=True
@@ -78,7 +79,7 @@ class Order(Base):
     __tablename__ = 'orders_order'
     id: Mapped[int_pk]
     order_number: Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
-    user_id: Mapped[int] = mapped_column(ForeignKey('users_user.id', ondelete='CASCADE'), nullable=False)  # змінено на id
+    user_id: Mapped[str] = mapped_column(ForeignKey('users_user.id', ondelete='CASCADE'), nullable=False)  # змінено на id
     delivery_address: Mapped[str] = mapped_column(String(255), nullable=False)
     created_at: Mapped[created_at]
     updated_at: Mapped[updated_at]

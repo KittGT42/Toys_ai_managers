@@ -1,0 +1,1876 @@
+~ via ⬢ v22.6.0
+➜ python --version
+zsh: command not found: python
+
+~ via ⬢ v22.6.0
+➜ python
+zsh: command not found: python
+
+~ via ⬢ v22.6.0
+➜ python -v
+zsh: command not found: python
+
+~ via ⬢ v22.6.0
+➜ python -V
+zsh: command not found: python
+
+~ via ⬢ v22.6.0
+➜ ls
+Applications         Downloads            Music                PycharmProjects      intellij-chatgpt     jbr_err_pid36948.log package-lock.json
+Desktop              Library              Pictures             dump.rdb             jbr_err_pid22089.log jbr_err_pid76364.log package.json
+Documents            Movies               Public               intel                jbr_err_pid3237.log  node_modules
+
+~ via ⬢ v22.6.0
+➜ python3 --version
+Python 3.13.1
+
+~ via ⬢ v22.6.0
+➜ brew install python@3.12.5
+==> Auto-updating Homebrew...
+Adjust how often this is run with HOMEBREW_AUTO_UPDATE_SECS or disable with
+HOMEBREW_NO_AUTO_UPDATE. Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
+==> Auto-updated Homebrew!
+Updated 3 taps (homebrew/services, homebrew/core and homebrew/cask).
+==> New Formulae
+acme.sh                  binocle                  chiko                    json2hcl                 redocly-cli              tf-summarize             umka-lang                xprop
+astroterm                c2patool                 diary                    ludusavi                 sdl3                     tfprovidercheck          xeyes                    xwininfo
+babelfish                cargo-cache              icann-rdap               precious                 terraform-cleaner        ubi                      xlsclients
+==> New Casks
+dana-dex                          font-bitcount                     font-maple-mono-nf-cn             ik-product-manager                linearmouse@beta                  turbotax-2024
+dockfix                           font-bitcount-prop-single-ink     font-monomakh                     imaging-edge-webcam               muteme                            valhalla-freq-echo
+flashspace                        font-bitcount-single-ink          freelens                          jottacloud                        spectrolite                       valhalla-space-modulator
+flowvision                        font-maple-mono-cn                gpt4all                           leader-key                        startupfolder                     valhalla-supermassive
+
+You have 58 outdated formulae and 1 outdated cask installed.
+
+Warning: No available formula with the name "python@3.12.5". Did you mean python@3.12, python@3.13, python@3.11 or python@3.10?
+==> Searching for similarly named formulae and casks...
+==> Formulae
+python@3.12 ✔                                      python@3.13 ✔                                      python@3.11                                        python@3.10
+
+To install python@3.12 ✔, run:
+  brew install python@3.12 ✔
+
+~ via ⬢ v22.6.0 took 19.0s
+➜ brew install python@3.12
+Warning: python@3.12 3.12.8 is already installed and up-to-date.
+To reinstall 3.12.8, run:
+  brew reinstall python@3.12
+
+~ via ⬢ v22.6.0 took 4.0s
+➜ which python3.12
+/usr/local/bin/python3.12
+
+~ via ⬢ v22.6.0
+➜ ls -l /usr/local/bin/python3.12
+lrwxr-xr-x  1 kittgt  admin  43 Jan 20 16:05 /usr/local/bin/python3.12 -> ../Cellar/python@3.12/3.12.8/bin/python3.12
+
+~ via ⬢ v22.6.0
+➜ rm -rf ~/Library/Caches/JetBrains/PyCharm*
+
+~ via ⬢ v22.6.0 took 5.1s
+➜ rm -rf ~/Library/Caches/JetBrains/PyCharm2024.3/python_stubs/*
+zsh: sure you want to delete all the files in /Users/kittgt/Library/Caches/JetBrains/PyCharm2024.3/python_stubs [yn]? y
+zsh: no matches found: /Users/kittgt/Library/Caches/JetBrains/PyCharm2024.3/python_stubs/*
+
+~ via ⬢ v22.6.0 took 4.9s
+➜ rm -rf ~/Library/Caches/JetBrains/PyCharm2024.3/*
+zsh: sure you want to delete all 8 files in /Users/kittgt/Library/Caches/JetBrains/PyCharm2024.3 [yn]? y
+
+~ via ⬢ v22.6.0
+➜ rm -rf ~/Library/Application\ Support/JetBrains/PyCharm2024.3/options/jdk.table.xml
+
+~ via ⬢ v22.6.0
+➜ curl -sSL https://install.python-poetry.org | python3 - --uninstall
+Removing Poetry (2.0.1)
+
+~ via ⬢ v22.6.0
+➜ rm -rf ~/Library/Application\ Support/pypoetry
+
+~ via ⬢ v22.6.0
+➜ rm -rf ~/.cache/pypoetry
+
+~ via ⬢ v22.6.0
+➜ curl -sSL https://install.python-poetry.org | python3 -
+Retrieving Poetry metadata
+
+# Welcome to Poetry!
+
+This will download and install the latest version of Poetry,
+a dependency and package manager for Python.
+
+It will add the `poetry` command to Poetry's bin directory, located at:
+
+/Users/kittgt/.local/bin
+
+You can uninstall at any time by executing this script with the --uninstall option,
+and these changes will be reverted.
+
+Installing Poetry (2.0.1): Done
+
+Poetry (2.0.1) is installed now. Great!
+
+To get started you need Poetry's bin directory (/Users/kittgt/.local/bin) in your `PATH`
+environment variable.
+
+Add `export PATH="/Users/kittgt/.local/bin:$PATH"` to your shell configuration file.
+
+Alternatively, you can call Poetry explicitly with `/Users/kittgt/.local/bin/poetry`.
+
+You can test that everything is set up by executing:
+
+`poetry --version`
+
+
+~ via ⬢ v22.6.0 took 17.1s
+➜ source ~/.zshrc
+
+~ via ⬢ v22.6.0
+➜ cat ~/.zshrc
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time Oh My Zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+#ZSH_THEME="agnoster"
+#ZSH_THEME="robbyrussell"
+#ZSH_THEME="half-life"
+ZSH_THEME="spaceship"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(z git zsh-autosuggestions zsh-syntax-highlighting)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch $(uname -m)"
+
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
+
+~ via ⬢ v22.6.0
+➜ nano ~/.zshrc
+
+~ via ⬢ v22.6.0 took 44.2s
+➜ source ~/.zshrc
+
+~ via ⬢ v22.6.0
+➜ poetry env list
+
+Poetry could not find a pyproject.toml file in /Users/kittgt or its parents
+
+~ via ⬢ v22.6.0 took 6.4s
+➜ rm -rf ~/Library/Application\ Support/pypoetry
+
+~ via ⬢ v22.6.0
+➜ rm -rf ~/.cache/pypoetry
+
+~ via ⬢ v22.6.0
+➜ rm -rf ~/.config/pypoetry
+
+~ via ⬢ v22.6.0
+➜ curl -sSL https://install.python-poetry.org | python3 - --uninstall
+Poetry is not currently installed.
+
+~ via ⬢ v22.6.0
+➜ brew install poetry
+==> Downloading https://formulae.brew.sh/api/formula.jws.json
+==> Downloading https://formulae.brew.sh/api/cask.jws.json
+Warning: poetry 2.0.1 is already installed and up-to-date.
+To reinstall 2.0.1, run:
+  brew reinstall poetry
+
+~ via ⬢ v22.6.0 took 5.6s
+➜ curl -sSL https://install.python-poetry.org | python3 - --uninstall
+Poetry is not currently installed.
+
+~ via ⬢ v22.6.0
+➜ brew install poetry
+Warning: poetry 2.0.1 is already installed and up-to-date.
+To reinstall 2.0.1, run:
+  brew reinstall poetry
+
+~ via ⬢ v22.6.0 took 3.4s
+➜ brew reinstall poetry
+Warning: You are using macOS 12.
+We (and Apple) do not provide support for this old version.
+It is expected behaviour that some formulae will fail to build in this old version.
+It is expected behaviour that Homebrew will be buggy and slow.
+Do not create any issues about this on Homebrew's GitHub repositories.
+Do not create any issues even if you think this message is unrelated.
+Any opened issues will be immediately closed without response.
+Do not ask for help from Homebrew or its maintainers on social media.
+You may ask for help in Homebrew's discussions but are unlikely to receive a response.
+Try to figure out the problem yourself and submit a fix as a pull request.
+We will review it but may or may not accept it.
+
+==> Fetching dependencies for poetry: certifi, xz and cmake
+==> Fetching certifi
+==> Downloading https://ghcr.io/v2/homebrew/core/certifi/manifests/2025.1.31
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://ghcr.io/v2/homebrew/core/certifi/blobs/sha256:1dc3a71ee0b857af77f190a83822b03cddb39f3c8834bfd2079e6e6fe10f64b4
+################################################################################################################################################################################################### 100.0%
+==> Fetching xz
+==> Downloading https://raw.githubusercontent.com/Homebrew/homebrew-core/1c0c8eb5e7ad6309fcba99cbf3b77caf5d1819a7/Formula/x/xz.rb
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://github.com/tukaani-project/xz/releases/download/v5.6.4/xz-5.6.4.tar.gz
+==> Downloading from https://objects.githubusercontent.com/github-production-release-asset-2e65be/553665726/ae02cd55-fcf9-4e7a-a98e-3d19b60d536f?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=release
+################################################################################################################################################################################################### 100.0%
+==> Fetching cmake
+==> Downloading https://raw.githubusercontent.com/Homebrew/homebrew-core/1c0c8eb5e7ad6309fcba99cbf3b77caf5d1819a7/Formula/c/cmake.rb
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://github.com/Kitware/CMake/releases/download/v3.31.5/cmake-3.31.5.tar.gz
+==> Downloading from https://objects.githubusercontent.com/github-production-release-asset-2e65be/537699/9ec949a1-2626-4bc3-a60a-e7655dc83b43?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=releaseass
+################################################################################################################################################################################################### 100.0%
+==> Fetching poetry
+==> Downloading https://raw.githubusercontent.com/Homebrew/homebrew-core/1c0c8eb5e7ad6309fcba99cbf3b77caf5d1819a7/Formula/p/poetry.rb
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/7d/46/aeab111f8e06793e4f0e421fcad593d547fb8313b50990f31681ee2fb1ad/build-1.2.2.post1.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/b7/a4/3390ac4dfa1773f661c8780368018230e8207ec4fd3800d2c0c3adee4456/cachecontrol-0.14.2.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/16/b0/572805e227f01586461c80e0fd25d65a2115599cc9dad142fee4b747c357/charset_normalizer-3.4.1.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/3c/30/f7960ed7041b158301c46774f87620352d50a9028d111b4211187af13783/cleo-2.1.0.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/6e/5d/d79f51058e75948d6c9e7a3d679080a47be61c84d3cc8f71ee31255eb22b/crashtest-0.4.1.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/0d/dd/1bec4c5ddb504ca60fc29472f3d27e8d4da1257a854e1d96742f15c1d02d/distlib-0.3.9.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/67/57/b4962be0410cf15dc7758fcc40337d09515cc74ac15e45d304f8b70c9b40/dulwich-0.22.7.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/8b/50/4b769ce1ac4071a1ef6d86b1a3fb56cdc3a37615e8c5519e1af96cdac366/fastjsonschema-2.21.1.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/9d/db/3ef5bb276dae18d6ec2124224403d1d67bccdbefc17af4cc8f553e341ab1/filelock-3.16.1.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/f1/70/7703c29685631f5a7590aa73f1f1d3fa9a380e654b86af429e0934a32f7d/idna-3.10.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/05/18/ceeb4e3ab3aa54495775775b38ae42b10a92f42ce42dfa44da684289b8c8/installer-0.7.0.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/06/c0/ed4a27bc5571b99e3cff68f8a9fa5b56ff7df1c2251cc715a652ddd26402/jaraco.classes-3.4.0.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/df/ad/f3777b81bf0b6e7bc7514a1656d3e637b2e8e15fab2ce3235730b3e7a4e6/jaraco_context-6.0.1.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/ab/23/9894b3df5d0a6eb44611c36aec777823fc2e07740dabbd0b810e19594013/jaraco_functools-4.1.0.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/d6/f4/154cf374c2daf2020e05c3c6a03c91348d59b23c5366e968feb198306fdf/jeepney-0.8.0.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/70/09/d904a6e96f76ff214be59e7aa6ef7190008f52a0ab6689760a98de0bf37d/keyring-25.6.0.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/51/78/65922308c4248e0eb08ebcbe67c95d48615cc6f27854b6f2e57143e9178f/more-itertools-10.5.0.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/cb/d0/7555686ae7ff5731205df1012ede15dd9d927f6227ea151e901c7406af4f/msgpack-1.1.0.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/d0/63/68dbb6eb2de9cb10ee4c9c14a0148804425e13c4fb20d61cce69f53106da/packaging-24.2.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/c9/a5/fa2432da887652e3a0c07661ebe4aabe7f4692936c742da489178acd34de/pkginfo-1.12.0.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/13/fc/128cc9cb8f03208bdbf93d3aa862e16d376844a14f9a0ce5cf4507372de4/platformdirs-4.3.6.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/c4/f5/89d11008714e0a49cab9cba7cce89c66ea5a94f37cc6d283798cc1725fac/poetry_core-2.0.1.tar.gz
+Already downloaded: /Users/kittgt/Library/Caches/Homebrew/downloads/225c544bd7da708139273c4f89adec30dc15f035a0775278789bf1d7124ff8a0--poetry_core-2.0.1.tar.gz
+==> Downloading https://files.pythonhosted.org/packages/e7/82/28175b2414effca1cdac8dc99f76d660e7a4fb0ceefa4b4ab8f5f6742925/pyproject_hooks-1.2.0.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/a4/aa/25e5a20131369d82c7b8288c99c2c3011ec47a3f5953ccc9cb8145720be5/rapidfuzz-3.11.0.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/63/70/2bf7780ad2d390a8d301ad0b550f1581eadbd9a20f896afe06353c2a2913/requests-2.32.3.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/f3/61/d7545dafb7ac2230c70d38d31cbfe4cc64f7144dc41f6e4e4b78ecd9f5bb/requests-toolbelt-1.0.0.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/53/a4/f48c9d79cb507ed1373477dbceaba7401fd8a23af63b837fa61f1dcd3691/SecretStorage-3.3.3.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/58/15/8b3609fd3830ef7b27b655beb4b4e9c62313a4e8da8c676e142cc210d58e/shellingham-1.5.4.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/b1/09/a439bec5888f00a54b8b9f05fa94d7f901d6735ef4e55dcec9bc37b5d8fa/tomlkit-0.13.2.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/db/1b/7bb619b31396d550022965673a0c284c914a0a4c68480f78097401e1b3e5/trove_classifiers-2025.1.10.15.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/aa/63/e53da845320b757bf29ef6a9062f5c669fe997973f966045cb019c3f4b66/urllib3-2.3.0.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/50/39/689abee4adc85aad2af8174bb195a819d0be064bf55fcc73b49d2b28ae77/virtualenv-20.28.1.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/62/bf/8b98081f9f8fd56d67b9478ff1e0f8c337cde08bcb92f0d592f0a7958983/xattr-1.1.4.tar.gz
+################################################################################################################################################################################################### 100.0%
+==> Downloading https://files.pythonhosted.org/packages/3c/8b/5467e3301050055d365e602cc6ba574ee4fbc8163aeec213e5a75b3f219b/poetry-2.0.1.tar.gz
+Already downloaded: /Users/kittgt/Library/Caches/Homebrew/downloads/be883f09b70115bce5a463f1fd0d8b92a08ff3b3230b2704af03c1a5e36114b6--poetry-2.0.1.tar.gz
+==> Reinstalling poetry
+==> Installing dependencies for poetry: cmake, certifi and xz
+==> Installing poetry dependency: cmake
+==> Patching
+==> ./bootstrap --prefix=/usr/local/Cellar/cmake/3.31.5 --no-system-libs --parallel=8 --datadir=/share/cmake --docdir=/share/doc/cmake --mandir=/share/man --system-zlib --system-bzip2 --system-curl -- -
+==> make
+==> make install
+🍺  /usr/local/Cellar/cmake/3.31.5: 3,767 files, 62.8MB, built in 15 minutes 43 seconds
+==> Installing poetry dependency: certifi
+==> Downloading https://ghcr.io/v2/homebrew/core/certifi/manifests/2025.1.31
+Already downloaded: /Users/kittgt/Library/Caches/Homebrew/downloads/a73a70af4149dfe7b8bd11cd9a16aecdd7ad4ac5fe95d74044adb8cd249e070f--certifi-2025.1.31.bottle_manifest.json
+==> Pouring certifi--2025.1.31.all.bottle.tar.gz
+🍺  /usr/local/Cellar/certifi/2025.1.31: 27 files, 26.8KB
+==> Installing poetry dependency: xz
+==> ./configure --disable-silent-rules --disable-nls
+==> make check
+==> make install
+🍺  /usr/local/Cellar/xz/5.6.4: 96 files, 1.9MB, built in 1 minute 11 seconds
+==> Installing poetry
+==> python3.13 -m venv --system-site-packages --without-pip /usr/local/Cellar/poetry/2.0.1/libexec
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--build-20250202-91843-uisppy/build-1.2.2.post1
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--cachecontrol-20250202-91843-onvufl/cachecontrol-0.14.2
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--charset-normalizer-20250202-91843-nyfa55/charset_normalizer-3.4.1
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--cleo-20250202-91843-n16ybj/cleo-2.1.0
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--crashtest-20250202-91843-adiaj4/crashtest-0.4.1
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--distlib-20250202-91843-zofaaq/distlib-0.3.9
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--dulwich-20250202-91843-6x7eai/dulwich-0.22.7
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--fastjsonschema-20250202-91843-d1nj83/fastjsonschema-2.21.1
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--filelock-20250202-91843-td6zpd/filelock-3.16.1
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--idna-20250202-91843-ofbnta/idna-3.10
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--installer-20250202-91843-ok86tb/installer-0.7.0
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--jaraco-classes-20250202-91843-y8lpbl/jaraco.classes-3.4.0
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--jaraco-context-20250202-91843-5cmoqr/jaraco_context-6.0.1
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--jaraco-functools-20250202-91843-296bft/jaraco_functools-4.1.0
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--jeepney-20250202-91843-epj9zf/jeepney-0.8.0
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--keyring-20250202-91843-si2q9f/keyring-25.6.0
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--more-itertools-20250202-91843-jy7o9n/more-itertools-10.5.0
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--msgpack-20250202-91843-nxum7b/msgpack-1.1.0
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--packaging-20250202-91843-146f6d/packaging-24.2
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--pkginfo-20250202-91843-tzx0c5/pkginfo-1.12.0
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--platformdirs-20250202-91843-l2ocf9/platformdirs-4.3.6
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--poetry-core-20250202-91843-8bxbac/poetry_core-2.0.1
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--pyproject-hooks-20250202-91843-y8dsor/pyproject_hooks-1.2.0
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--rapidfuzz-20250202-91843-4s8rdj/rapidfuzz-3.11.0
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--requests-20250202-91843-evqqsz/requests-2.32.3
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--requests-toolbelt-20250202-91843-k2u462/requests-toolbelt-1.0.0
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--secretstorage-20250202-91843-otg84n/SecretStorage-3.3.3
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--shellingham-20250202-91843-d4rg0i/shellingham-1.5.4
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--tomlkit-20250202-91843-8bh1u/tomlkit-0.13.2
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--trove-classifiers-20250202-91843-h2zrfn/trove_classifiers-2025.1.10.15
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--urllib3-20250202-91843-blyrnk/urllib3-2.3.0
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--virtualenv-20250202-91843-tsapao/virtualenv-20.28.1
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry--xattr-20250202-91843-3xc5hj/xattr-1.1.4
+==> python3.13 -m pip --python=/usr/local/Cellar/poetry/2.0.1/libexec/bin/python install /private/tmp/poetry-20250202-91843-lq5m8f/poetry-2.0.1
+==> Caveats
+zsh completions have been installed to:
+  /usr/local/share/zsh/site-functions
+==> Summary
+🍺  /usr/local/Cellar/poetry/2.0.1: 1,258 files, 16.2MB, built in 5 minutes 23 seconds
+==> Running `brew cleanup poetry`...
+Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
+Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--build--1.2.2.post1.tar.gz... (45.6KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--cachecontrol--0.14.2.tar.gz... (28.2KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--charset-normalizer--3.4.1.tar.gz... (120.3KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--cleo--2.1.0.tar.gz... (78KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--crashtest--0.4.1.tar.gz... (4.6KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--distlib--0.3.9.tar.gz... (599.5KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--dulwich--0.22.7.tar.gz... (442.3KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--fastjsonschema--2.21.1.tar.gz... (365.2KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--filelock--3.16.1.tar.gz... (17.6KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--idna--3.10.tar.gz... (186KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--installer--0.7.0.tar.gz... (463.2KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--jaraco-classes--3.4.0.tar.gz... (11.5KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--jaraco-context--6.0.1.tar.gz... (13.6KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--jaraco-functools--4.1.0.tar.gz... (18.7KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--jeepney--0.8.0.tar.gz... (103.5KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--keyring--25.6.0.tar.gz... (61.3KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--more-itertools--10.5.0.tar.gz... (118.2KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--msgpack--1.1.0.tar.gz... (163.3KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--packaging--24.2.tar.gz... (160.1KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--pkginfo--1.12.0.tar.gz... (440.8KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--platformdirs--4.3.6.tar.gz... (20.8KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--pyproject-hooks--1.2.0.tar.gz... (18.8KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--rapidfuzz--3.11.0.tar.gz... (55.3MB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--requests--2.32.3.tar.gz... (128.1KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--requests-toolbelt--1.0.0.tar.gz... (202KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--secretstorage--3.3.3.tar.gz... (19.3KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--shellingham--1.5.4.tar.gz... (10KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--tomlkit--0.13.2.tar.gz... (188.4KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--trove-classifiers--2025.1.10.15.tar.gz... (15.9KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--urllib3--2.3.0.tar.gz... (300KB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--virtualenv--20.28.1.tar.gz... (7.3MB)
+Removing: /Users/kittgt/Library/Caches/Homebrew/poetry--xattr--1.1.4.tar.gz... (16.3KB)
+Warning: The following dependents of upgraded formulae are outdated but will not
+be upgraded because they are not bottled:
+  libtiff
+  ffmpeg
+  pango
+  openjpeg
+  harfbuzz
+  glib
+  openvino
+  aom
+  libarchive
+  gcc
+  tesseract
+  cairo
+  webp
+  numpy
+  openblas
+  leptonica
+  jpeg-xl
+==> Caveats
+==> poetry
+zsh completions have been installed to:
+  /usr/local/share/zsh/site-functions
+
+~ via ⬢ v22.6.0 took 23m 29.6s
+➜ poetry config --list
+cache-dir = "/Users/kittgt/Library/Caches/pypoetry"
+installer.max-workers = null
+installer.no-binary = null
+installer.only-binary = null
+installer.parallel = true
+installer.re-resolve = true
+keyring.enabled = true
+requests.max-retries = 0
+solver.lazy-wheel = true
+system-git-client = false
+virtualenvs.create = true
+virtualenvs.in-project = null
+virtualenvs.options.always-copy = false
+virtualenvs.options.no-pip = false
+virtualenvs.options.system-site-packages = false
+virtualenvs.path = "{cache-dir}/virtualenvs"  # /Users/kittgt/Library/Caches/pypoetry/virtualenvs
+virtualenvs.prompt = "{project_name}-py{python_version}"
+virtualenvs.use-poetry-python = false
+
+~ via ⬢ v22.6.0
+➜ poetry config virtualenvs.in-project true
+
+~ via ⬢ v22.6.0
+➜ poetry config --list
+cache-dir = "/Users/kittgt/Library/Caches/pypoetry"
+installer.max-workers = null
+installer.no-binary = null
+installer.only-binary = null
+installer.parallel = true
+installer.re-resolve = true
+keyring.enabled = true
+requests.max-retries = 0
+solver.lazy-wheel = true
+system-git-client = false
+virtualenvs.create = true
+virtualenvs.in-project = true
+virtualenvs.options.always-copy = false
+virtualenvs.options.no-pip = false
+virtualenvs.options.system-site-packages = false
+virtualenvs.path = "{cache-dir}/virtualenvs"  # /Users/kittgt/Library/Caches/pypoetry/virtualenvs
+virtualenvs.prompt = "{project_name}-py{python_version}"
+virtualenvs.use-poetry-python = false
+
+~ via ⬢ v22.6.0
+➜ pytho3 -V
+zsh: command not found: pytho3
+
+~ via ⬢ v22.6.0
+➜ python3 -V
+Python 3.13.1
+
+~ via ⬢ v22.6.0
+➜ wich python@3.12
+zsh: command not found: wich
+
+~ via ⬢ v22.6.0
+➜ wich python@3.12
+zsh: command not found: wich
+
+~ via ⬢ v22.6.0
+➜ which python3.12
+/usr/local/opt/python@3.12/bin/python3.12
+
+~ via ⬢ v22.6.0
+➜ python3 -V
+Python 3.12.6
+
+~ via ⬢ v22.6.0
+➜ brew list | grep python
+python@3.12
+python@3.13
+
+~ via ⬢ v22.6.0
+➜ brew info python@3.12
+==> python@3.12: stable 3.12.8
+Interpreted, interactive, object-oriented programming language
+https://www.python.org/
+Installed
+/usr/local/Cellar/python@3.12/3.12.8 (8,390 files, 189.0MB) *
+  Built from source on 2025-01-20 at 16:04:59
+From: https://github.com/Homebrew/homebrew-core/blob/HEAD/Formula/p/python@3.12.rb
+License: Python-2.0
+==> Dependencies
+Build: pkgconf ✔
+Required: mpdecimal ✔, openssl@3 ✔, sqlite ✔, xz ✔
+==> Caveats
+Python is installed as
+  /usr/local/bin/python3.12
+
+Unversioned and major-versioned symlinks `python`, `python3`, `python-config`, `python3-config`, `pip`, `pip3`, etc. pointing to
+`python3.12`, `python3.12-config`, `pip3.12` etc., respectively, are installed into
+  /usr/local/opt/python@3.12/libexec/bin
+
+If you do not need a specific version of Python, and always want Homebrew's `python3` in your PATH:
+  brew install python3
+
+See: https://docs.brew.sh/Homebrew-and-Python
+==> Analytics
+install: 117,409 (30 days), 417,345 (90 days), 3,158,675 (365 days)
+install-on-request: 52,973 (30 days), 191,008 (90 days), 1,154,066 (365 days)
+build-error: 53 (30 days)
+
+~ via ⬢ v22.6.0 took 4.4s
+➜ brew info python@3.13
+==> python@3.13: stable 3.13.1
+Interpreted, interactive, object-oriented programming language
+https://www.python.org/
+Installed
+/usr/local/Cellar/python@3.13/3.13.1 (8,285 files, 193.6MB) *
+  Built from source on 2025-01-20 at 16:14:31
+From: https://github.com/Homebrew/homebrew-core/blob/HEAD/Formula/p/python@3.13.rb
+License: Python-2.0
+==> Dependencies
+Build: pkgconf ✔
+Required: mpdecimal ✔, openssl@3 ✔, sqlite ✔, xz ✔
+==> Caveats
+Python is installed as
+  /usr/local/bin/python3
+
+Unversioned symlinks `python`, `python-config`, `pip` etc. pointing to
+`python3`, `python3-config`, `pip3` etc., respectively, are installed into
+  /usr/local/opt/python@3.13/libexec/bin
+
+See: https://docs.brew.sh/Homebrew-and-Python
+==> Analytics
+install: 250,495 (30 days), 803,198 (90 days), 1,061,789 (365 days)
+install-on-request: 66,793 (30 days), 193,799 (90 days), 244,984 (365 days)
+build-error: 4,261 (30 days)
+
+~ via ⬢ v22.6.0 took 4.2s
+➜ brew unlink python@3.12
+Unlinking /usr/local/Cellar/python@3.12/3.12.8... 5 symlinks removed.
+
+~ via ⬢ v22.6.0 took 2.8s
+➜ brew link python@3.13
+Warning: Already linked: /usr/local/Cellar/python@3.13/3.13.1
+To relink, run:
+  brew unlink python@3.13 && brew link python@3.13
+
+~ via ⬢ v22.6.0 took 2.4s
+➜ brew unlink python@3.13 && brew link python@3.13
+Unlinking /usr/local/Cellar/python@3.13/3.13.1... 18 symlinks removed.
+Linking /usr/local/Cellar/python@3.13/3.13.1...
+Error: Could not symlink bin/idle3
+Target /usr/local/bin/idle3
+already exists. You may want to remove it:
+  rm '/usr/local/bin/idle3'
+
+To force the link and overwrite all conflicting files:
+  brew link --overwrite python@3.13
+
+To list all files that would be deleted:
+  brew link --overwrite python@3.13 --dry-run
+
+~ via ⬢ v22.6.0 took 6.1s
+➜ python3 -V
+Python 3.12.6
+
+~ via ⬢ v22.6.0
+➜ brew link --overwrite python@3.13
+Linking /usr/local/Cellar/python@3.13/3.13.1... 23 symlinks created.
+
+~ via ⬢ v22.6.0 took 2.9s
+➜ python3 -V
+Python 3.13.1
+
+~ via ⬢ v22.6.0
+➜ wich python3.13
+zsh: command not found: wich
+
+~ via ⬢ v22.6.0
+➜ wich python@3.13
+zsh: command not found: wich
+
+~ via ⬢ v22.6.0
+➜ wich python3
+zsh: command not found: wich
+
+~ via ⬢ v22.6.0
+➜ which python3.12
+/usr/local/opt/python@3.12/bin/python3.12
+
+~ via ⬢ v22.6.0
+➜ which python3.13
+/usr/local/bin/python3.13
+
+~ via ⬢ v22.6.0
+➜ poetry config virtualenvs.in-project false
+
+~ via ⬢ v22.6.0
+➜ ls
+Applications         Downloads            Music                PycharmProjects      intellij-chatgpt     jbr_err_pid36948.log package-lock.json
+Desktop              Library              Pictures             dump.rdb             jbr_err_pid22089.log jbr_err_pid76364.log package.json
+Documents            Movies               Public               intel                jbr_err_pid3237.log  node_modules
+
+~ via ⬢ v22.6.0
+➜ cd PycharmProjects
+
+~/PycharmProjects via ⬢ v22.6.0
+➜ cd Parsing_tryes
+
+~/PycharmProjects/Parsing_tryes via ⬢ v22.6.0
+➜ poetry init
+
+This command will guide you through creating your pyproject.toml config.
+
+Package name [parsing_tryes]:
+Version [0.1.0]:
+Description []:
+Author [KittGT42 <114111458+KittGT42@users.noreply.github.com>, n to skip]:
+License []:
+Compatible Python versions [>=3.13]:  >=3.12.8, <3.13.0
+
+Would you like to define your main dependencies interactively? (yes/no) [yes] no
+Would you like to define your development dependencies interactively? (yes/no) [yes] no
+Generated file
+
+[project]
+name = "parsing-tryes"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "KittGT42",email = "114111458+KittGT42@users.noreply.github.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12.8, <3.13.0"
+dependencies = [
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+Do you confirm generation? (yes/no) [yes] yes
+
+~/PycharmProjects/Parsing_tryes via ⬢ v22.6.0 took 11m 8.1s
+➜ brew unlink python@3.13
+Unlinking /usr/local/Cellar/python@3.13/3.13.1... 23 symlinks removed.
+
+~/PycharmProjects/Parsing_tryes via ⬢ v22.6.0 took 3.0s
+➜ brew link python@3.12
+Linking /usr/local/Cellar/python@3.12/3.12.8...
+Error: Could not symlink bin/2to3-3.12
+Target /usr/local/bin/2to3-3.12
+already exists. You may want to remove it:
+  rm '/usr/local/bin/2to3-3.12'
+
+To force the link and overwrite all conflicting files:
+  brew link --overwrite python@3.12
+
+To list all files that would be deleted:
+  brew link --overwrite python@3.12 --dry-run
+
+~/PycharmProjects/Parsing_tryes via ⬢ v22.6.0 took 4.1s
+➜ python3 -V
+Python 3.9.6
+
+~/PycharmProjects/Parsing_tryes via ⬢ v22.6.0
+➜ python3 -V
+Python 3.9.6
+
+~/PycharmProjects/Parsing_tryes via ⬢ v22.6.0
+➜ brew link --overwrite python@3.12
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+Error: The current working directory must exist to run brew.
+
+~/PycharmProjects/Parsing_tryes via ⬢ v22.6.0
+➜ python3 -V
+Python 3.9.6
+
+~/PycharmProjects/Parsing_tryes via ⬢ v22.6.0
+➜ brew list | grep python
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+Error: The current working directory must exist to run brew.
+
+~/PycharmProjects/Parsing_tryes via ⬢ v22.6.0
+➜ ../
+zsh: permission denied: ../
+
+~/PycharmProjects/Parsing_tryes via ⬢ v22.6.0
+➜ ../
+zsh: permission denied: ../
+
+~/PycharmProjects/Parsing_tryes via ⬢ v22.6.0
+➜ ../
+zsh: permission denied: ../
+
+~/PycharmProjects/Parsing_tryes via ⬢ v22.6.0
+➜ ./
+zsh: permission denied: ./
+
+~/PycharmProjects/Parsing_tryes via ⬢ v22.6.0
+➜ ~
+
+~ via ⬢ v22.6.0
+➜ ls
+Applications         Downloads            Music                PycharmProjects      intellij-chatgpt     jbr_err_pid36948.log package-lock.json
+Desktop              Library              Pictures             dump.rdb             jbr_err_pid22089.log jbr_err_pid76364.log package.json
+Documents            Movies               Public               intel                jbr_err_pid3237.log  node_modules
+
+~ via ⬢ v22.6.0
+➜ brew link python@3.12
+Linking /usr/local/Cellar/python@3.12/3.12.8...
+Error: Could not symlink bin/2to3-3.12
+Target /usr/local/bin/2to3-3.12
+already exists. You may want to remove it:
+  rm '/usr/local/bin/2to3-3.12'
+
+To force the link and overwrite all conflicting files:
+  brew link --overwrite python@3.12
+
+To list all files that would be deleted:
+  brew link --overwrite python@3.12 --dry-run
+
+~ via ⬢ v22.6.0 took 4.2s
+➜ brew link --overwrite python@3.12
+Linking /usr/local/Cellar/python@3.12/3.12.8... 11 symlinks created.
+
+~ via ⬢ v22.6.0 took 2.6s
+➜ python3 -V
+Python 3.9.6
+
+~ via ⬢ v22.6.0
+➜ brew list | grep python
+python@3.12
+python@3.13
+
+~ via ⬢ v22.6.0
+➜ brew unlink python@3.13
+Unlinking /usr/local/Cellar/python@3.13/3.13.1... 0 symlinks removed.
+
+~ via ⬢ v22.6.0 took 4.4s
+➜ brew link --overwrite python@3.12
+Warning: Already linked: /usr/local/Cellar/python@3.12/3.12.8
+To relink, run:
+  brew unlink python@3.12 && brew link python@3.12
+
+~ via ⬢ v22.6.0 took 2.8s
+➜ python3 --version
+Python 3.9.6
+
+~ via ⬢ v22.6.0
+➜ export PATH="/usr/local/opt/python@3.12/bin:$PATH"
+
+~ via ⬢ v22.6.0
+➜ source ~/.zshrc
+
+~ via ⬢ v22.6.0
+➜ python3 --version
+Python 3.9.6
+
+~ via ⬢ v22.6.0
+➜ which -a python3
+/usr/bin/python3
+
+~ via ⬢ v22.6.0
+➜ /usr/local/opt/python@3.12/bin/python3 --version
+zsh: no such file or directory: /usr/local/opt/python@3.12/bin/python3
+
+~ via ⬢ v22.6.0
+➜ brew --prefix python@3.12
+/usr/local/opt/python@3.12
+
+~ via ⬢ v22.6.0
+➜ ls -l /usr/local/opt/python@3.12
+lrwxr-xr-x  1 kittgt  admin  28 Feb  2 20:14 /usr/local/opt/python@3.12 -> ../Cellar/python@3.12/3.12.8
+
+~ via ⬢ v22.6.0
+➜ ls -l /usr/local/Cellar/python@3.12
+total 0
+drwxr-xr-x  14 kittgt  admin  448 Jan 20 16:05 3.12.8
+
+~ via ⬢ v22.6.0
+➜ ls -l /usr/local/Cellar/python@3.12/3.12.8/bin
+total 16
+lrwxr-xr-x  1 kittgt  admin   58 Jan 20 16:05 2to3-3.12 -> ../Frameworks/Python.framework/Versions/3.12/bin/2to3-3.12
+lrwxr-xr-x  1 kittgt  admin   57 Jan 20 16:05 idle3.12 -> ../Frameworks/Python.framework/Versions/3.12/bin/idle3.12
+-rwxr-xr-x  1 kittgt  wheel  246 Jan 20 16:05 pip3.12
+lrwxr-xr-x  1 kittgt  admin   58 Jan 20 16:05 pydoc3.12 -> ../Frameworks/Python.framework/Versions/3.12/bin/pydoc3.12
+lrwxr-xr-x  1 kittgt  admin   59 Jan 20 16:05 python3.12 -> ../Frameworks/Python.framework/Versions/3.12/bin/python3.12
+lrwxr-xr-x  1 kittgt  admin   66 Jan 20 16:05 python3.12-config -> ../Frameworks/Python.framework/Versions/3.12/bin/python3.12-config
+-rwxr-xr-x  1 kittgt  wheel  233 Jan 20 16:05 wheel3.12
+
+~ via ⬢ v22.6.0
+➜ /usr/local/Cellar/python@3.12/3.12.8/bin/python3.12 --version
+Python 3.12.8
+
+~ via ⬢ v22.6.0
+➜ export PATH="/usr/local/Cellar/python@3.12/3.12.8/bin:$PATH"
+
+~ via ⬢ v22.6.0
+➜ source ~/.zshrc
+
+~ via ⬢ v22.6.0 took 2.9s
+➜ python3.12 --version
+Python 3.12.8
+
+~ via ⬢ v22.6.0
+➜ python3 --version
+Python 3.9.6
+
+~ via ⬢ v22.6.0
+➜ cd PycharmProjects
+
+~/PycharmProjects via ⬢ v22.6.0
+➜ cd Parsing_tryes
+cd: no such file or directory: Parsing_tryes
+
+~/PycharmProjects via ⬢ v22.6.0
+➜ ls
+AI_Managers                                          Harshit_Garg_https_dexcheck                          ShopBijouterie
+AI_for_pay_subscribe_wayforpay                       HelpForTimo                                          Tadas_Butkus_pmp_pigugroup_eu
+AI_for_personal_assistant_Levonovich                 Ignacio_Cotino_.paginasamarillas                     Tadas_Butkus_reprice
+AI_for_sales_animals_items                           Join_To_IT_Test_Pet_Project                          Tadas_Butkus_reprice_relize
+AI_for_sales_toys                                    Jose_Maria_MacIas_fix_Awin                           Tadas_Butkus_reprice_relize.zip
+AI_managers_sales_toys                               LearnJS                                              TestTuskStarNAVI
+AIproductforSCRAP                                    Mahmoud_Moubarak_scrape_giftmania_online             TomerK_Parsing_asiafruitlogistica_com
+Alex_watchbase                                       Mahmoud_Moubarak_scrape_moustaphalabban              TomerK_Parsing_ifema_es
+Ashok_A_parsing_atlantis                             OLXscrapingCORSAIR                                   TomerK_Parsing_zipmec_eu
+Danish_Valmani_reaperscans                           ParsingDynamicSite                                   Toys_ai_managers
+Danish_Valmani_scrap_rci_com                         ParsingHotels                                        VenkataK_bhagyam5_freelance_Telegram_GoogleSheetProj
+DataOxAutoRiaProj                                    Parsings_traes                                       django_blog
+DjangoPetProject                                     PoundwholesaleSCRAPING                               globalmindassociatedtesttusk
+DjangoWeatherAPIproj                                 Proj_for_testing                                     max_markitan_main_project
+ERPYura                                              Samuel_Bonne_preprints_org                           max_markitan_test_tusk
+ERPYuraFrontend                                      ScrapingAssemChammahMAKE.COM                         travel-main
+FixBagFabrizioRegalli                                ScrapingForMassimo_Legge
+FixDataBaseTahaYassineTizaoui                        ScrapingPersoenlich
+
+~/PycharmProjects via ⬢ v22.6.0
+➜ cd Parsings_traes
+
+~/PycharmProjects/Parsings_traes via ⬢ v22.6.0
+➜ poetry env use python3.12
+
+Poetry could not find a pyproject.toml file in /Users/kittgt/PycharmProjects/Parsings_traes or its parents
+
+~/PycharmProjects/Parsings_traes via ⬢ v22.6.0
+➜ poetry env use python3.12
+
+Poetry could not find a pyproject.toml file in /Users/kittgt/PycharmProjects/Parsings_traes or its parents
+
+~/PycharmProjects/Parsings_traes via ⬢ v22.6.0
+➜ poetry init
+
+This command will guide you through creating your pyproject.toml config.
+
+Package name [parsings_traes]:
+Version [0.1.0]:
+Description []:
+Author [KittGT42 <114111458+KittGT42@users.noreply.github.com>, n to skip]:
+License []:
+Compatible Python versions [>=3.13]:  >=3.12.8, <3.13.0
+
+Would you like to define your main dependencies interactively? (yes/no) [yes] no
+Would you like to define your development dependencies interactively? (yes/no) [yes] no
+Generated file
+
+[project]
+name = "parsings-traes"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "KittGT42",email = "114111458+KittGT42@users.noreply.github.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12.8, <3.13.0"
+dependencies = [
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+Do you confirm generation? (yes/no) [yes]
+
+~/PycharmProjects/Parsings_traes via ⬢ v22.6.0 took 6m 50.2s
+➜ poetry env use python3.12
+Creating virtualenv parsings-traes-NJY8vEEc-py3.12 in /Users/kittgt/Library/Caches/pypoetry/virtualenvs
+Using virtualenv: /Users/kittgt/Library/Caches/pypoetry/virtualenvs/parsings-traes-NJY8vEEc-py3.12
+
+~/PycharmProjects/Parsings_traes via ⬢ v22.6.0
+➜ ssh root@209.38.101.165
+The authenticity of host '209.38.101.165 (209.38.101.165)' can't be established.
+ED25519 key fingerprint is SHA256:rkEk40bIr+IP2DXYXelWSJwx5hLUwHzG+JDnhFNs1SQ.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '209.38.101.165' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 24.10 (GNU/Linux 6.11.0-9-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Tue Feb  4 12:50:20 UTC 2025
+
+  System load:  0.0               Processes:             99
+  Usage of /:   24.3% of 8.55GB   Users logged in:       0
+  Memory usage: 38%               IPv4 address for eth0: 209.38.101.165
+  Swap usage:   0%                IPv4 address for eth0: 10.18.0.6
+
+60 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+
+*** System restart required ***
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~# sudo apt update
+Hit:1 http://mirrors.digitalocean.com/ubuntu oracular InRelease
+Get:2 http://mirrors.digitalocean.com/ubuntu oracular-updates InRelease [126 kB]
+Hit:3 https://repos-droplet.digitalocean.com/apt/droplet-agent main InRelease
+Get:4 http://security.ubuntu.com/ubuntu oracular-security InRelease [126 kB]
+Get:5 http://mirrors.digitalocean.com/ubuntu oracular-backports InRelease [126 kB]
+Get:6 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 Components [35.4 kB]
+Get:7 http://mirrors.digitalocean.com/ubuntu oracular-updates/universe amd64 Components [53.3 kB]
+Get:8 http://mirrors.digitalocean.com/ubuntu oracular-updates/restricted amd64 Components [216 B]
+Get:9 http://mirrors.digitalocean.com/ubuntu oracular-updates/multiverse amd64 Components [212 B]
+Get:10 http://mirrors.digitalocean.com/ubuntu oracular-backports/main amd64 Components [212 B]
+Get:11 http://mirrors.digitalocean.com/ubuntu oracular-backports/universe amd64 Components [9700 B]
+Get:12 http://mirrors.digitalocean.com/ubuntu oracular-backports/restricted amd64 Components [216 B]
+Get:13 http://mirrors.digitalocean.com/ubuntu oracular-backports/multiverse amd64 Components [216 B]
+Get:14 http://security.ubuntu.com/ubuntu oracular-security/main amd64 Components [9044 B]
+Get:15 http://security.ubuntu.com/ubuntu oracular-security/universe amd64 Components [5180 B]
+Get:16 http://security.ubuntu.com/ubuntu oracular-security/restricted amd64 Components [212 B]
+Get:17 http://security.ubuntu.com/ubuntu oracular-security/multiverse amd64 Components [212 B]
+Fetched 493 kB in 1s (352 kB/s)
+59 packages can be upgraded. Run 'apt list --upgradable' to see them.
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~# sudo apt upgrade -y
+Upgrading:
+  bash           fwupd                      grub-pc-bin           libfdisk1               libpam-systemd         libudisks2-0       openssh-sftp-server  ssh-import-id      util-linux
+  bpftrace       gir1.2-packagekitglib-1.0  grub2-common          libfwupd2               libpolkit-agent-1-0    libuuid1           packagekit           systemd            uuid-runtime
+  bsdextrautils  grub-common                initramfs-tools       libmount1               libpolkit-gobject-1-0  mount              packagekit-tools     systemd-resolved   xfsprogs
+  bsdutils       grub-efi-amd64-bin         initramfs-tools-bin   libnetplan1             libsmartcols1          netplan-generator  polkitd              systemd-sysv
+  cloud-init     grub-efi-amd64-signed      initramfs-tools-core  libnspr4                libsystemd-shared      netplan.io         python3-netplan      systemd-timesyncd
+  eject          grub-efi-amd64-unsigned    libblkid1             libnss-systemd          libsystemd0            openssh-client     snapd                udev
+  fdisk          grub-pc                    libdb5.3t64           libpackagekit-glib2-18  libudev1               openssh-server     sosreport            udisks2
+
+Installing dependencies:
+  systemd-cryptsetup
+
+Summary:
+  Upgrading: 59, Installing: 1, Removing: 0, Not Upgrading: 0
+  Download size: 63.2 MB
+  Freed space: 33.4 MB
+
+Get:1 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 bash amd64 5.2.32-1ubuntu1.1 [805 kB]
+Get:2 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 bsdutils amd64 1:2.40.2-1ubuntu1.1 [100 kB]
+Get:3 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 eject amd64 2.40.2-1ubuntu1.1 [44.8 kB]
+Get:4 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 systemd-timesyncd amd64 256.5-2ubuntu3.1 [40.2 kB]
+Get:5 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 systemd-resolved amd64 256.5-2ubuntu3.1 [316 kB]
+Get:6 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 systemd amd64 256.5-2ubuntu3.1 [3420 kB]
+Get:7 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 udev amd64 256.5-2ubuntu3.1 [1969 kB]
+Get:8 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 systemd-sysv amd64 256.5-2ubuntu3.1 [11.9 kB]
+Get:9 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 libnss-systemd amd64 256.5-2ubuntu3.1 [165 kB]
+Get:10 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 libpam-systemd amd64 256.5-2ubuntu3.1 [245 kB]
+Get:11 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 libsystemd-shared amd64 256.5-2ubuntu3.1 [2204 kB]
+Get:12 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 libudev1 amd64 256.5-2ubuntu3.1 [196 kB]
+Get:13 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 libsystemd0 amd64 256.5-2ubuntu3.1 [449 kB]
+Get:14 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 bsdextrautils amd64 2.40.2-1ubuntu1.1 [93.5 kB]
+Get:15 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 libfdisk1 amd64 2.40.2-1ubuntu1.1 [165 kB]
+Get:16 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 fdisk amd64 2.40.2-1ubuntu1.1 [140 kB]
+Get:17 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 libblkid1 amd64 2.40.2-1ubuntu1.1 [129 kB]
+Get:18 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 libmount1 amd64 2.40.2-1ubuntu1.1 [153 kB]
+Get:19 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 libsmartcols1 amd64 2.40.2-1ubuntu1.1 [86.3 kB]
+Get:20 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 mount amd64 2.40.2-1ubuntu1.1 [137 kB]
+Get:21 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 libuuid1 amd64 2.40.2-1ubuntu1.1 [40.6 kB]
+Get:22 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 util-linux amd64 2.40.2-1ubuntu1.1 [1120 kB]
+Get:23 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 uuid-runtime amd64 2.40.2-1ubuntu1.1 [52.2 kB]
+Get:24 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 openssh-sftp-server amd64 1:9.7p1-7ubuntu4.1 [37.1 kB]
+Get:25 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 openssh-server amd64 1:9.7p1-7ubuntu4.1 [514 kB]
+Get:26 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 openssh-client amd64 1:9.7p1-7ubuntu4.1 [909 kB]
+Get:27 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 libdb5.3t64 amd64 5.3.28+dfsg2-7ubuntu1 [759 kB]
+Get:28 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 python3-netplan amd64 1.1.1-1~ubuntu24.10.1 [24.2 kB]
+Get:29 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 netplan-generator amd64 1.1.1-1~ubuntu24.10.1 [61.0 kB]
+Get:30 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 netplan.io amd64 1.1.1-1~ubuntu24.10.1 [68.7 kB]
+Get:31 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 libnetplan1 amd64 1.1.1-1~ubuntu24.10.1 [131 kB]
+Get:32 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 bpftrace amd64 0.21.2-1ubuntu1.1 [1071 kB]
+Get:33 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 libfwupd2 amd64 1.9.27-0ubuntu1~24.10.1 [135 kB]
+Get:34 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 polkitd amd64 124-2ubuntu1.24.10.2 [95.7 kB]
+Get:35 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 libpolkit-agent-1-0 amd64 124-2ubuntu1.24.10.2 [17.6 kB]
+Get:36 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 libpolkit-gobject-1-0 amd64 124-2ubuntu1.24.10.2 [49.4 kB]
+Get:37 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 fwupd amd64 1.9.27-0ubuntu1~24.10.1 [4592 kB]
+Get:38 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 libpackagekit-glib2-18 amd64 1.3.0-1ubuntu1 [119 kB]
+Get:39 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 gir1.2-packagekitglib-1.0 amd64 1.3.0-1ubuntu1 [25.5 kB]
+Get:40 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 grub2-common amd64 2.12-5ubuntu5.1 [672 kB]
+Get:41 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 grub-pc amd64 2.12-5ubuntu5.1 [137 kB]
+Get:42 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 grub-pc-bin amd64 2.12-5ubuntu5.1 [1101 kB]
+Get:43 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 grub-common amd64 2.12-5ubuntu5.1 [2113 kB]
+Get:44 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 grub-efi-amd64-unsigned amd64 2.12-5ubuntu5.1 [1391 kB]
+Get:45 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 grub-efi-amd64-signed amd64 1.209.1+2.12-5ubuntu5.1 [1394 kB]
+Get:46 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 grub-efi-amd64-bin amd64 2.12-5ubuntu5.1 [780 kB]
+Get:47 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 initramfs-tools all 0.142ubuntu34.1 [7902 B]
+Get:48 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 initramfs-tools-core all 0.142ubuntu34.1 [50.3 kB]
+Get:49 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 initramfs-tools-bin amd64 0.142ubuntu34.1 [22.2 kB]
+Get:50 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 libnspr4 amd64 2:4.35-1.1ubuntu1.1 [118 kB]
+Get:51 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 udisks2 amd64 2.10.1-9ubuntu3 [299 kB]
+Get:52 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 libudisks2-0 amd64 2.10.1-9ubuntu3 [174 kB]
+Get:53 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 packagekit-tools amd64 1.3.0-1ubuntu1 [28.6 kB]
+Get:54 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 packagekit amd64 1.3.0-1ubuntu1 [445 kB]
+Get:55 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 snapd amd64 2.66.1+24.10 [31.8 MB]
+Get:56 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 sosreport amd64 4.8.0-1ubuntu0.1 [351 kB]
+Get:57 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 systemd-cryptsetup amd64 256.5-2ubuntu3.1 [119 kB]
+Get:58 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 xfsprogs amd64 6.8.0-2.2ubuntu1.1 [926 kB]
+Get:59 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 cloud-init all 24.4-0ubuntu1~24.10.1 [601 kB]
+Get:60 http://mirrors.digitalocean.com/ubuntu oracular-updates/main amd64 ssh-import-id all 5.11-0ubuntu2.24.10.1 [10.2 kB]
+Fetched 63.2 MB in 3s (24.4 MB/s)
+Extracting templates from packages: 100%
+Preconfiguring packages ...
+(Reading database ... 108178 files and directories currently installed.)
+Preparing to unpack .../bash_5.2.32-1ubuntu1.1_amd64.deb ...
+Unpacking bash (5.2.32-1ubuntu1.1) over (5.2.32-1ubuntu1) ...
+Setting up bash (5.2.32-1ubuntu1.1) ...
+update-alternatives: using /usr/share/man/man7/bash-builtins.7.gz to provide /usr/share/man/man7/builtins.7.gz (builtins.7.gz) in auto mode
+(Reading database ... 108178 files and directories currently installed.)
+Preparing to unpack .../bsdutils_1%3a2.40.2-1ubuntu1.1_amd64.deb ...
+Unpacking bsdutils (1:2.40.2-1ubuntu1.1) over (1:2.40.2-1ubuntu1) ...
+Setting up bsdutils (1:2.40.2-1ubuntu1.1) ...
+(Reading database ... 108178 files and directories currently installed.)
+Preparing to unpack .../0-eject_2.40.2-1ubuntu1.1_amd64.deb ...
+Unpacking eject (2.40.2-1ubuntu1.1) over (2.40.2-1ubuntu1) ...
+Preparing to unpack .../1-systemd-timesyncd_256.5-2ubuntu3.1_amd64.deb ...
+Unpacking systemd-timesyncd (256.5-2ubuntu3.1) over (256.5-2ubuntu3) ...
+Preparing to unpack .../2-systemd-resolved_256.5-2ubuntu3.1_amd64.deb ...
+Unpacking systemd-resolved (256.5-2ubuntu3.1) over (256.5-2ubuntu3) ...
+Preparing to unpack .../3-systemd_256.5-2ubuntu3.1_amd64.deb ...
+Unpacking systemd (256.5-2ubuntu3.1) over (256.5-2ubuntu3) ...
+Preparing to unpack .../4-udev_256.5-2ubuntu3.1_amd64.deb ...
+Unpacking udev (256.5-2ubuntu3.1) over (256.5-2ubuntu3) ...
+Preparing to unpack .../5-libsystemd-shared_256.5-2ubuntu3.1_amd64.deb ...
+Unpacking libsystemd-shared:amd64 (256.5-2ubuntu3.1) over (256.5-2ubuntu3) ...
+Setting up libsystemd-shared:amd64 (256.5-2ubuntu3.1) ...
+(Reading database ... 108178 files and directories currently installed.)
+Preparing to unpack .../libsystemd0_256.5-2ubuntu3.1_amd64.deb ...
+Unpacking libsystemd0:amd64 (256.5-2ubuntu3.1) over (256.5-2ubuntu3) ...
+Setting up libsystemd0:amd64 (256.5-2ubuntu3.1) ...
+Setting up systemd (256.5-2ubuntu3.1) ...
+/usr/lib/tmpfiles.d/legacy.conf:13: Duplicate line for path "/run/lock", ignoring.
+/usr/lib/tmpfiles.d/legacy.conf:13: Duplicate line for path "/run/lock", ignoring.
+(Reading database ... 108178 files and directories currently installed.)
+Preparing to unpack .../systemd-sysv_256.5-2ubuntu3.1_amd64.deb ...
+Unpacking systemd-sysv (256.5-2ubuntu3.1) over (256.5-2ubuntu3) ...
+Preparing to unpack .../libnss-systemd_256.5-2ubuntu3.1_amd64.deb ...
+Unpacking libnss-systemd:amd64 (256.5-2ubuntu3.1) over (256.5-2ubuntu3) ...
+Preparing to unpack .../libpam-systemd_256.5-2ubuntu3.1_amd64.deb ...
+Unpacking libpam-systemd:amd64 (256.5-2ubuntu3.1) over (256.5-2ubuntu3) ...
+Preparing to unpack .../libudev1_256.5-2ubuntu3.1_amd64.deb ...
+Unpacking libudev1:amd64 (256.5-2ubuntu3.1) over (256.5-2ubuntu3) ...
+Setting up libudev1:amd64 (256.5-2ubuntu3.1) ...
+(Reading database ... 108178 files and directories currently installed.)
+Preparing to unpack .../bsdextrautils_2.40.2-1ubuntu1.1_amd64.deb ...
+Unpacking bsdextrautils (2.40.2-1ubuntu1.1) over (2.40.2-1ubuntu1) ...
+Preparing to unpack .../libfdisk1_2.40.2-1ubuntu1.1_amd64.deb ...
+Unpacking libfdisk1:amd64 (2.40.2-1ubuntu1.1) over (2.40.2-1ubuntu1) ...
+Preparing to unpack .../fdisk_2.40.2-1ubuntu1.1_amd64.deb ...
+Unpacking fdisk (2.40.2-1ubuntu1.1) over (2.40.2-1ubuntu1) ...
+Preparing to unpack .../libblkid1_2.40.2-1ubuntu1.1_amd64.deb ...
+Unpacking libblkid1:amd64 (2.40.2-1ubuntu1.1) over (2.40.2-1ubuntu1) ...
+Setting up libblkid1:amd64 (2.40.2-1ubuntu1.1) ...
+(Reading database ... 108178 files and directories currently installed.)
+Preparing to unpack .../libmount1_2.40.2-1ubuntu1.1_amd64.deb ...
+Unpacking libmount1:amd64 (2.40.2-1ubuntu1.1) over (2.40.2-1ubuntu1) ...
+Setting up libmount1:amd64 (2.40.2-1ubuntu1.1) ...
+(Reading database ... 108178 files and directories currently installed.)
+Preparing to unpack .../libsmartcols1_2.40.2-1ubuntu1.1_amd64.deb ...
+Unpacking libsmartcols1:amd64 (2.40.2-1ubuntu1.1) over (2.40.2-1ubuntu1) ...
+Setting up libsmartcols1:amd64 (2.40.2-1ubuntu1.1) ...
+(Reading database ... 108178 files and directories currently installed.)
+Preparing to unpack .../mount_2.40.2-1ubuntu1.1_amd64.deb ...
+Unpacking mount (2.40.2-1ubuntu1.1) over (2.40.2-1ubuntu1) ...
+Preparing to unpack .../libuuid1_2.40.2-1ubuntu1.1_amd64.deb ...
+Unpacking libuuid1:amd64 (2.40.2-1ubuntu1.1) over (2.40.2-1ubuntu1) ...
+Setting up libuuid1:amd64 (2.40.2-1ubuntu1.1) ...
+(Reading database ... 108178 files and directories currently installed.)
+Preparing to unpack .../util-linux_2.40.2-1ubuntu1.1_amd64.deb ...
+Unpacking util-linux (2.40.2-1ubuntu1.1) over (2.40.2-1ubuntu1) ...
+Setting up util-linux (2.40.2-1ubuntu1.1) ...
+fstrim.service is a disabled or a static unit not running, not starting it.
+(Reading database ... 108178 files and directories currently installed.)
+Preparing to unpack .../uuid-runtime_2.40.2-1ubuntu1.1_amd64.deb ...
+Unpacking uuid-runtime (2.40.2-1ubuntu1.1) over (2.40.2-1ubuntu1) ...
+Preparing to unpack .../openssh-sftp-server_1%3a9.7p1-7ubuntu4.1_amd64.deb ...
+Unpacking openssh-sftp-server (1:9.7p1-7ubuntu4.1) over (1:9.7p1-7ubuntu4) ...
+Preparing to unpack .../openssh-server_1%3a9.7p1-7ubuntu4.1_amd64.deb ...
+Unpacking openssh-server (1:9.7p1-7ubuntu4.1) over (1:9.7p1-7ubuntu4) ...
+Preparing to unpack .../openssh-client_1%3a9.7p1-7ubuntu4.1_amd64.deb ...
+Unpacking openssh-client (1:9.7p1-7ubuntu4.1) over (1:9.7p1-7ubuntu4) ...
+Preparing to unpack .../libdb5.3t64_5.3.28+dfsg2-7ubuntu1_amd64.deb ...
+Unpacking libdb5.3t64:amd64 (5.3.28+dfsg2-7ubuntu1) over (5.3.28+dfsg2-7) ...
+Setting up libdb5.3t64:amd64 (5.3.28+dfsg2-7ubuntu1) ...
+(Reading database ... 108178 files and directories currently installed.)
+Preparing to unpack .../00-python3-netplan_1.1.1-1~ubuntu24.10.1_amd64.deb ...
+Unpacking python3-netplan (1.1.1-1~ubuntu24.10.1) over (1.1-1) ...
+Preparing to unpack .../01-netplan-generator_1.1.1-1~ubuntu24.10.1_amd64.deb ...
+Adding 'diversion of /lib/systemd/system-generators/netplan to /lib/systemd/system-generators/netplan.usr-is-merged by netplan-generator'
+Unpacking netplan-generator (1.1.1-1~ubuntu24.10.1) over (1.1-1) ...
+Preparing to unpack .../02-netplan.io_1.1.1-1~ubuntu24.10.1_amd64.deb ...
+Unpacking netplan.io (1.1.1-1~ubuntu24.10.1) over (1.1-1) ...
+Preparing to unpack .../03-libnetplan1_1.1.1-1~ubuntu24.10.1_amd64.deb ...
+Unpacking libnetplan1:amd64 (1.1.1-1~ubuntu24.10.1) over (1.1-1) ...
+Preparing to unpack .../04-bpftrace_0.21.2-1ubuntu1.1_amd64.deb ...
+Unpacking bpftrace (0.21.2-1ubuntu1.1) over (0.21.2-1ubuntu1) ...
+Preparing to unpack .../05-libfwupd2_1.9.27-0ubuntu1~24.10.1_amd64.deb ...
+Unpacking libfwupd2:amd64 (1.9.27-0ubuntu1~24.10.1) over (1.9.24-1) ...
+Preparing to unpack .../06-polkitd_124-2ubuntu1.24.10.2_amd64.deb ...
+Unpacking polkitd (124-2ubuntu1.24.10.2) over (124-2ubuntu1) ...
+Preparing to unpack .../07-libpolkit-agent-1-0_124-2ubuntu1.24.10.2_amd64.deb ...
+Unpacking libpolkit-agent-1-0:amd64 (124-2ubuntu1.24.10.2) over (124-2ubuntu1) ...
+Preparing to unpack .../08-libpolkit-gobject-1-0_124-2ubuntu1.24.10.2_amd64.deb ...
+Unpacking libpolkit-gobject-1-0:amd64 (124-2ubuntu1.24.10.2) over (124-2ubuntu1) ...
+Preparing to unpack .../09-fwupd_1.9.27-0ubuntu1~24.10.1_amd64.deb ...
+Unpacking fwupd (1.9.27-0ubuntu1~24.10.1) over (1.9.24-1) ...
+Preparing to unpack .../10-libpackagekit-glib2-18_1.3.0-1ubuntu1_amd64.deb ...
+Unpacking libpackagekit-glib2-18:amd64 (1.3.0-1ubuntu1) over (1.3.0-1) ...
+Preparing to unpack .../11-gir1.2-packagekitglib-1.0_1.3.0-1ubuntu1_amd64.deb ...
+Unpacking gir1.2-packagekitglib-1.0 (1.3.0-1ubuntu1) over (1.3.0-1) ...
+Preparing to unpack .../12-grub2-common_2.12-5ubuntu5.1_amd64.deb ...
+Unpacking grub2-common (2.12-5ubuntu5.1) over (2.12-5ubuntu5) ...
+Preparing to unpack .../13-grub-pc_2.12-5ubuntu5.1_amd64.deb ...
+Unpacking grub-pc (2.12-5ubuntu5.1) over (2.12-5ubuntu5) ...
+Preparing to unpack .../14-grub-pc-bin_2.12-5ubuntu5.1_amd64.deb ...
+Unpacking grub-pc-bin (2.12-5ubuntu5.1) over (2.12-5ubuntu5) ...
+Preparing to unpack .../15-grub-common_2.12-5ubuntu5.1_amd64.deb ...
+Unpacking grub-common (2.12-5ubuntu5.1) over (2.12-5ubuntu5) ...
+Preparing to unpack .../16-grub-efi-amd64-unsigned_2.12-5ubuntu5.1_amd64.deb ...
+Unpacking grub-efi-amd64-unsigned (2.12-5ubuntu5.1) over (2.12-5ubuntu5) ...
+Preparing to unpack .../17-grub-efi-amd64-signed_1.209.1+2.12-5ubuntu5.1_amd64.deb ...
+Unpacking grub-efi-amd64-signed (1.209.1+2.12-5ubuntu5.1) over (1.209+2.12-5ubuntu5) ...
+Preparing to unpack .../18-grub-efi-amd64-bin_2.12-5ubuntu5.1_amd64.deb ...
+Unpacking grub-efi-amd64-bin (2.12-5ubuntu5.1) over (2.12-5ubuntu5) ...
+Preparing to unpack .../19-initramfs-tools_0.142ubuntu34.1_all.deb ...
+Unpacking initramfs-tools (0.142ubuntu34.1) over (0.142ubuntu34) ...
+Preparing to unpack .../20-initramfs-tools-core_0.142ubuntu34.1_all.deb ...
+Unpacking initramfs-tools-core (0.142ubuntu34.1) over (0.142ubuntu34) ...
+Preparing to unpack .../21-initramfs-tools-bin_0.142ubuntu34.1_amd64.deb ...
+Unpacking initramfs-tools-bin (0.142ubuntu34.1) over (0.142ubuntu34) ...
+Preparing to unpack .../22-libnspr4_2%3a4.35-1.1ubuntu1.1_amd64.deb ...
+Unpacking libnspr4:amd64 (2:4.35-1.1ubuntu1.1) over (2:4.35-1.1ubuntu1) ...
+Preparing to unpack .../23-udisks2_2.10.1-9ubuntu3_amd64.deb ...
+Unpacking udisks2 (2.10.1-9ubuntu3) over (2.10.1-9ubuntu2) ...
+Preparing to unpack .../24-libudisks2-0_2.10.1-9ubuntu3_amd64.deb ...
+Unpacking libudisks2-0:amd64 (2.10.1-9ubuntu3) over (2.10.1-9ubuntu2) ...
+Preparing to unpack .../25-packagekit-tools_1.3.0-1ubuntu1_amd64.deb ...
+Unpacking packagekit-tools (1.3.0-1ubuntu1) over (1.3.0-1) ...
+Preparing to unpack .../26-packagekit_1.3.0-1ubuntu1_amd64.deb ...
+Unpacking packagekit (1.3.0-1ubuntu1) over (1.3.0-1) ...
+Preparing to unpack .../27-snapd_2.66.1+24.10_amd64.deb ...
+Unpacking snapd (2.66.1+24.10) over (2.65.3+24.10) ...
+Preparing to unpack .../28-sosreport_4.8.0-1ubuntu0.1_amd64.deb ...
+Unpacking sosreport (4.8.0-1ubuntu0.1) over (4.8.0-1) ...
+Selecting previously unselected package systemd-cryptsetup.
+Preparing to unpack .../29-systemd-cryptsetup_256.5-2ubuntu3.1_amd64.deb ...
+Unpacking systemd-cryptsetup (256.5-2ubuntu3.1) ...
+Preparing to unpack .../30-xfsprogs_6.8.0-2.2ubuntu1.1_amd64.deb ...
+Unpacking xfsprogs (6.8.0-2.2ubuntu1.1) over (6.8.0-2.2ubuntu1) ...
+Preparing to unpack .../31-cloud-init_24.4-0ubuntu1~24.10.1_all.deb ...
+Unpacking cloud-init (24.4-0ubuntu1~24.10.1) over (24.4~3+really24.3.1-0ubuntu4) ...
+Preparing to unpack .../32-ssh-import-id_5.11-0ubuntu2.24.10.1_all.deb ...
+Unpacking ssh-import-id (5.11-0ubuntu2.24.10.1) over (5.11-0ubuntu2) ...
+Setting up systemd-sysv (256.5-2ubuntu3.1) ...
+Setting up bsdextrautils (2.40.2-1ubuntu1.1) ...
+Setting up bpftrace (0.21.2-1ubuntu1.1) ...
+Setting up openssh-client (1:9.7p1-7ubuntu4.1) ...
+Setting up ssh-import-id (5.11-0ubuntu2.24.10.1) ...
+Setting up libfwupd2:amd64 (1.9.27-0ubuntu1~24.10.1) ...
+Setting up libpackagekit-glib2-18:amd64 (1.3.0-1ubuntu1) ...
+Setting up libnss-systemd:amd64 (256.5-2ubuntu3.1) ...
+Setting up libnetplan1:amd64 (1.1.1-1~ubuntu24.10.1) ...
+Setting up eject (2.40.2-1ubuntu1.1) ...
+Setting up grub-common (2.12-5ubuntu5.1) ...
+update-rc.d: warning: start and stop actions are no longer supported; falling back to defaults
+Setting up gir1.2-packagekitglib-1.0 (1.3.0-1ubuntu1) ...
+Setting up systemd-cryptsetup (256.5-2ubuntu3.1) ...
+Setting up libnspr4:amd64 (2:4.35-1.1ubuntu1.1) ...
+Setting up systemd-timesyncd (256.5-2ubuntu3.1) ...
+systemd-time-wait-sync.service is a disabled or a static unit not running, not starting it.
+Setting up udev (256.5-2ubuntu3.1) ...
+Setting up xfsprogs (6.8.0-2.2ubuntu1.1) ...
+update-initramfs: deferring update (trigger activated)
+Setting up sosreport (4.8.0-1ubuntu0.1) ...
+Setting up libfdisk1:amd64 (2.40.2-1ubuntu1.1) ...
+Setting up mount (2.40.2-1ubuntu1.1) ...
+Setting up uuid-runtime (2.40.2-1ubuntu1.1) ...
+uuidd.service is a disabled or a static unit not running, not starting it.
+Setting up libpam-systemd:amd64 (256.5-2ubuntu3.1) ...
+Setting up python3-netplan (1.1.1-1~ubuntu24.10.1) ...
+Setting up netplan-generator (1.1.1-1~ubuntu24.10.1) ...
+Removing 'diversion of /lib/systemd/system-generators/netplan to /lib/systemd/system-generators/netplan.usr-is-merged by netplan-generator'
+Setting up libpolkit-gobject-1-0:amd64 (124-2ubuntu1.24.10.2) ...
+Setting up libudisks2-0:amd64 (2.10.1-9ubuntu3) ...
+Setting up systemd-resolved (256.5-2ubuntu3.1) ...
+Setting up initramfs-tools-bin (0.142ubuntu34.1) ...
+Setting up snapd (2.66.1+24.10) ...
+snapd.failure.service is a disabled or a static unit not running, not starting it.
+snapd.snap-repair.service is a disabled or a static unit not running, not starting it.
+Setting up openssh-sftp-server (1:9.7p1-7ubuntu4.1) ...
+Setting up openssh-server (1:9.7p1-7ubuntu4.1) ...
+Setting up grub-efi-amd64-unsigned (2.12-5ubuntu5.1) ...
+Setting up grub2-common (2.12-5ubuntu5.1) ...
+Setting up grub-pc-bin (2.12-5ubuntu5.1) ...
+Setting up fdisk (2.40.2-1ubuntu1.1) ...
+Setting up netplan.io (1.1.1-1~ubuntu24.10.1) ...
+Setting up grub-pc (2.12-5ubuntu5.1) ...
+Installing for i386-pc platform.
+Installation finished. No error reported.
+Sourcing file `/etc/default/grub'
+Sourcing file `/etc/default/grub.d/50-cloudimg-settings.cfg'
+Sourcing file `/etc/default/grub.d/51-legacy-ifnames.cfg'
+Generating grub configuration file ...
+Found linux image: /boot/vmlinuz-6.11.0-14-generic
+Found initrd image: /boot/initrd.img-6.11.0-14-generic
+Found linux image: /boot/vmlinuz-6.11.0-9-generic
+Found initrd image: /boot/initrd.img-6.11.0-9-generic
+Warning: os-prober will not be executed to detect other bootable partitions.
+Systems on them will not be added to the GRUB boot configuration.
+Check GRUB_DISABLE_OS_PROBER documentation entry.
+Adding boot menu entry for UEFI Firmware Settings ...
+done
+Setting up libpolkit-agent-1-0:amd64 (124-2ubuntu1.24.10.2) ...
+Setting up initramfs-tools-core (0.142ubuntu34.1) ...
+Setting up grub-efi-amd64-bin (2.12-5ubuntu5.1) ...
+Setting up fwupd (1.9.27-0ubuntu1~24.10.1) ...
+fwupd-offline-update.service is a disabled or a static unit not running, not starting it.
+fwupd-refresh.service is a disabled or a static unit not running, not starting it.
+fwupd.service is a disabled or a static unit not running, not starting it.
+Setting up polkitd (124-2ubuntu1.24.10.2) ...
+Setting up udisks2 (2.10.1-9ubuntu3) ...
+Setting up cloud-init (24.4-0ubuntu1~24.10.1) ...
+Setting up initramfs-tools (0.142ubuntu34.1) ...
+update-initramfs: deferring update (trigger activated)
+Setting up grub-efi-amd64-signed (1.209.1+2.12-5ubuntu5.1) ...
+Installing for x86_64-efi platform.
+grub-install: warning: EFI variables cannot be set on this system.
+grub-install: warning: You will have to complete the GRUB setup manually.
+Installation finished. No error reported.
+Processing triggers for sgml-base (1.31) ...
+Processing triggers for debianutils (5.20) ...
+Processing triggers for install-info (7.1-3build2) ...
+Processing triggers for libc-bin (2.40-1ubuntu3) ...
+Processing triggers for rsyslog (8.2406.0-1ubuntu2) ...
+Processing triggers for ufw (0.36.2-6) ...
+Processing triggers for man-db (2.12.1-3) ...
+Processing triggers for dbus (1.14.10-4ubuntu5) ...
+Processing triggers for shared-mime-info (2.4-5) ...
+Setting up packagekit (1.3.0-1ubuntu1) ...
+Setting up packagekit-tools (1.3.0-1ubuntu1) ...
+Processing triggers for initramfs-tools (0.142ubuntu34.1) ...
+update-initramfs: Generating /boot/initrd.img-6.11.0-14-generic
+Scanning processes...
+Scanning candidates...
+Scanning linux images...
+
+Pending kernel upgrade!
+Running kernel version:
+  6.11.0-9-generic
+Diagnostics:
+  The currently running kernel version is not the expected kernel version 6.11.0-14-generic.
+
+Restarting the system to load the new kernel will not be handled automatically, so you should consider rebooting.
+
+Restarting services...
+ /etc/needrestart/restart.d/systemd-manager
+ systemctl restart multipathd.service systemd-journald.service systemd-networkd.service
+
+Service restarts being deferred:
+ /etc/needrestart/restart.d/dbus.service
+ systemctl restart getty@tty1.service
+ systemctl restart serial-getty@ttyS0.service
+ systemctl restart systemd-logind.service
+ systemctl restart unattended-upgrades.service
+
+No containers need to be restarted.
+
+User sessions running outdated binaries:
+ root @ session #680: apt[55108], sshd[54715]
+ root @ user manager service: systemd[54719]
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~# sudo apt install python3.12 python3.12-venv nginx supervisor git
+python3.12 is already the newest version (3.12.7-1ubuntu1.1).
+python3.12 set to manually installed.
+git is already the newest version (1:2.45.2-1ubuntu1.1).
+git set to manually installed.
+Installing:
+  nginx  python3.12-venv  supervisor
+
+Installing dependencies:
+  nginx-common  python3-pip-whl  python3-setuptools-whl
+
+Suggested packages:
+  fcgiwrap  nginx-doc  ssl-cert  supervisor-doc
+
+Summary:
+  Upgrading: 0, Installing: 6, Removing: 0, Not Upgrading: 0
+  Download size: 3513 kB
+  Space needed: 6469 kB / 6947 MB available
+
+Continue? [Y/n] Y
+Get:1 http://mirrors.digitalocean.com/ubuntu oracular/universe amd64 supervisor all 4.2.5-2 [285 kB]
+Get:2 http://mirrors.digitalocean.com/ubuntu oracular/main amd64 nginx-common all 1.26.0-2ubuntu3 [30.7 kB]
+Get:3 http://mirrors.digitalocean.com/ubuntu oracular/main amd64 nginx amd64 1.26.0-2ubuntu3 [600 kB]
+Get:4 http://mirrors.digitalocean.com/ubuntu oracular-updates/universe amd64 python3-pip-whl all 24.2+dfsg-1ubuntu0.1 [1420 kB]
+Get:5 http://mirrors.digitalocean.com/ubuntu oracular/universe amd64 python3-setuptools-whl all 74.1.2-1 [1171 kB]
+Get:6 http://mirrors.digitalocean.com/ubuntu oracular-updates/universe amd64 python3.12-venv amd64 3.12.7-1ubuntu1.1 [5694 B]
+Fetched 3513 kB in 6s (541 kB/s)
+Preconfiguring packages ...
+Selecting previously unselected package supervisor.
+(Reading database ... 108231 files and directories currently installed.)
+Preparing to unpack .../0-supervisor_4.2.5-2_all.deb ...
+Unpacking supervisor (4.2.5-2) ...
+Selecting previously unselected package nginx-common.
+Preparing to unpack .../1-nginx-common_1.26.0-2ubuntu3_all.deb ...
+Unpacking nginx-common (1.26.0-2ubuntu3) ...
+Selecting previously unselected package nginx.
+Preparing to unpack .../2-nginx_1.26.0-2ubuntu3_amd64.deb ...
+Unpacking nginx (1.26.0-2ubuntu3) ...
+Selecting previously unselected package python3-pip-whl.
+Preparing to unpack .../3-python3-pip-whl_24.2+dfsg-1ubuntu0.1_all.deb ...
+Unpacking python3-pip-whl (24.2+dfsg-1ubuntu0.1) ...
+Selecting previously unselected package python3-setuptools-whl.
+Preparing to unpack .../4-python3-setuptools-whl_74.1.2-1_all.deb ...
+Unpacking python3-setuptools-whl (74.1.2-1) ...
+Selecting previously unselected package python3.12-venv.
+Preparing to unpack .../5-python3.12-venv_3.12.7-1ubuntu1.1_amd64.deb ...
+Unpacking python3.12-venv (3.12.7-1ubuntu1.1) ...
+Setting up python3-setuptools-whl (74.1.2-1) ...
+Setting up supervisor (4.2.5-2) ...
+Created symlink '/etc/systemd/system/multi-user.target.wants/supervisor.service' → '/usr/lib/systemd/system/supervisor.service'.
+Setting up python3-pip-whl (24.2+dfsg-1ubuntu0.1) ...
+Setting up python3.12-venv (3.12.7-1ubuntu1.1) ...
+Setting up nginx (1.26.0-2ubuntu3) ...
+Setting up nginx-common (1.26.0-2ubuntu3) ...
+Created symlink '/etc/systemd/system/multi-user.target.wants/nginx.service' → '/usr/lib/systemd/system/nginx.service'.
+Processing triggers for ufw (0.36.2-6) ...
+Processing triggers for man-db (2.12.1-3) ...
+Scanning processes...
+Scanning candidates...
+Scanning linux images...
+
+Pending kernel upgrade!
+Running kernel version:
+  6.11.0-9-generic
+Diagnostics:
+  The currently running kernel version is not the expected kernel version 6.11.0-14-generic.
+
+Restarting the system to load the new kernel will not be handled automatically, so you should consider rebooting.
+
+Restarting services...
+
+Service restarts being deferred:
+ /etc/needrestart/restart.d/dbus.service
+ systemctl restart getty@tty1.service
+ systemctl restart serial-getty@ttyS0.service
+ systemctl restart systemd-logind.service
+ systemctl restart unattended-upgrades.service
+
+No containers need to be restarted.
+
+User sessions running outdated binaries:
+ root @ session #680: sshd[54715]
+ root @ user manager service: systemd[54719]
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~# cd /root
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~# ді
+ді: command not found
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~# ls
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~# git clone main https://github.com/KittGT42/Toys_ai_managers.git
+fatal: repository 'main' does not exist
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~# git clone https://github.com/KittGT42/Toys_ai_managers.git
+Cloning into 'Toys_ai_managers'...
+remote: Enumerating objects: 215, done.
+remote: Counting objects: 100% (215/215), done.
+remote: Compressing objects: 100% (138/138), done.
+remote: Total 215 (delta 99), reused 185 (delta 69), pack-reused 0 (from 0)
+Receiving objects: 100% (215/215), 2.50 MiB | 8.72 MiB/s, done.
+Resolving deltas: 100% (99/99), done.
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~# ls
+Toys_ai_managers
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~# cd Toys_ai_managers
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers# curl -sSL https://install.python-poetry.org | python3 -
+Retrieving Poetry metadata
+
+# Welcome to Poetry!
+
+This will download and install the latest version of Poetry,
+a dependency and package manager for Python.
+
+It will add the `poetry` command to Poetry's bin directory, located at:
+
+/root/.local/bin
+
+You can uninstall at any time by executing this script with the --uninstall option,
+and these changes will be reverted.
+
+Installing Poetry (2.0.1): Done
+
+Poetry (2.0.1) is installed now. Great!
+
+To get started you need Poetry's bin directory (/root/.local/bin) in your `PATH`
+environment variable.
+
+Add `export PATH="/root/.local/bin:$PATH"` to your shell configuration file.
+
+Alternatively, you can call Poetry explicitly with `/root/.local/bin/poetry`.
+
+You can test that everything is set up by executing:
+
+`poetry --version`
+
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers# export PATH="/root/.local/bin:$PATH"
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers# nano .env
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers# nano .env
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers# poetry install
+Creating virtualenv ai-for-sales-animals-items-7hkYuWcd-py3.12 in /root/.cache/pypoetry/virtualenvs
+Installing dependencies from lock file
+
+Package operations: 88 installs, 0 updates, 0 removals
+
+  - Installing certifi (2024.12.14)
+  - Installing charset-normalizer (3.4.1)
+  - Installing h11 (0.14.0)
+  - Installing idna (3.10)
+  - Installing markupsafe (3.0.2)
+  - Installing numpy (2.2.2)
+  - Installing pillow (11.1.0)
+  - Installing sniffio (1.3.1)
+  - Installing tqdm (4.67.1)
+  - Installing typing-extensions (4.12.2)
+  - Installing urllib3 (2.3.0)
+  - Installing annotated-types (0.7.0)
+  - Installing anyio (4.8.0)
+  - Installing blinker (1.9.0)
+  - Installing click (8.1.8)
+  - Installing decorator (4.4.2)
+  - Installing frozenlist (1.5.0)
+  - Installing greenlet (3.1.1)
+  - Installing hpack (4.1.0)
+  - Installing httpcore (1.0.7)
+  - Installing hyperframe (6.1.0)
+  - Installing imageio (2.37.0)
+  - Installing imageio-ffmpeg (0.6.0)
+  - Installing iniconfig (2.0.0)
+  - Installing itsdangerous (2.2.0)
+  - Installing jinja2 (3.1.5)
+  - Installing multidict (6.1.0)
+  - Installing packaging (24.2)
+  - Installing pluggy (1.5.0)
+  - Installing proglog (0.1.10)
+  - Installing propcache (0.2.1)
+  - Installing pyasn1 (0.6.1)
+  - Installing pydantic-core (2.27.1)
+  - Installing pyyaml (6.0.2)
+  - Installing requests (2.32.3)
+  - Installing six (1.17.0)
+  - Installing werkzeug (3.1.3)
+  - Installing aiohappyeyeballs (2.4.4)
+  - Installing aiosignal (1.3.2)
+  - Installing asgiref (3.8.1)
+  - Installing attrs (25.1.0)
+  - Installing chardet (5.2.0)
+  - Installing distro (1.9.0)
+  - Installing dnspython (2.7.0)
+  - Installing flask (3.1.0)
+  - Installing future (1.0.0)
+  - Installing greenletio (0.11.0)
+  - Installing h2 (4.1.0)
+  - Installing httpx (0.28.1)
+  - Installing huepy (1.2.1)
+  - Installing jiter (0.8.2)
+  - Installing mock (5.1.0)
+  - Installing moviepy (1.0.3)
+  - Installing priority (2.0.0)
+  - Installing pyaes (1.6.1)
+  - Installing pycryptodomex (3.21.0)
+  - Installing pydantic (2.10.1)
+  - Installing pysocks (1.7.1)
+  - Installing pytest (8.3.4)
+  - Installing python-dateutil (2.9.0.post0)
+  - Installing python-dotenv (1.0.1)
+  - Installing pytz (2024.2)
+  - Installing requests-toolbelt (1.0.0)
+  - Installing responses (0.25.6)
+  - Installing rsa (4.9)
+  - Installing schedule (1.2.2)
+  - Installing sqlparse (0.5.3)
+  - Installing tzdata (2025.1)
+  - Installing uvicorn (0.34.0)
+  - Installing wsproto (1.2.0)
+  - Installing yarl (1.18.3)
+  - Installing aioflask (0.4.0)
+  - Installing aiohttp (3.11.11)
+  - Installing asyncpg (0.30.0)
+  - Installing cloudinary (1.42.1)
+  - Installing anthropic (0.43.1)
+  - Installing django (5.1.5)
+  - Installing hypercorn (0.17.3)
+  - Installing instabot (0.117.0)
+  - Installing instagrapi (2.1.3)
+  - Installing openai (1.60.2)
+  - Installing pandas (2.2.3)
+  - Installing psycopg2-binary (2.9.10)
+  - Installing pydantic-settings (2.7.1)
+  - Installing pymongo (4.11)
+  - Installing sqlalchemy (2.0.37)
+  - Installing telethon (1.38.1)
+  - Installing tenacity (9.0.0)
+
+Installing the current project: ai-for-sales-animals-items (0.1.0)
+Error: The current project could not be installed: Readme path `/root/Toys_ai_managers/README.md` does not exist.
+If you do not want to install the current project use --no-root.
+If you want to use Poetry only for dependency management but not for packaging, you can disable package mode by setting package-mode = false in your pyproject.toml file.
+If you did intend to install the current project, you may need to set `packages` in your pyproject.toml file.
+
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers# cd toys_e_commerence
+-bash: cd: toys_e_commerence: No such file or directory
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers# ді
+ді: command not found
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers# ls
+AI_managers_sales_toys  poetry.lock  pyproject.toml  toys_e_commerce
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers# cd toys_e_commerce
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# poetry run python manage.py migrate
+System check identified some issues:
+
+WARNINGS:
+?: (staticfiles.W004) The directory '/root/Toys_ai_managers/toys_e_commerce/static' in the STATICFILES_DIRS setting does not exist.
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, orders, products, sessions, users
+Running migrations:
+  No migrations to apply.
+  Your models in app(s): 'products' have changes that are not yet reflected in a migration, and so won't be applied.
+  Run 'manage.py makemigrations' to make new migrations, and then re-run 'manage.py migrate' to apply them.
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# poetry run python manage.py collectstatic --noinput
+System check identified some issues:
+
+WARNINGS:
+?: (staticfiles.W004) The directory '/root/Toys_ai_managers/toys_e_commerce/static' in the STATICFILES_DIRS setting does not exist.
+
+130 static files copied to '/root/Toys_ai_managers/toys_e_commerce/staticfiles'.
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# mkdir static
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# poetry run python manage.py makemigrations products
+Migrations for 'products':
+  products/migrations/0003_product_age_category_years.py
+    + Add field age_category_years to product
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# poetry run python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, orders, products, sessions, users
+Running migrations:
+  No migrations to apply.
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# poetry run python manage.py collectstatic --noin
+
+0 static files copied to '/root/Toys_ai_managers/toys_e_commerce/staticfiles', 130 unmodified.
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# ls -la /root/Toys_ai_managers/toys_e_commerce/staticfiles/
+total 16
+drwxr-xr-x 4 root root 4096 Feb  4 13:30 .
+drwxr-xr-x 8 root root 4096 Feb  4 13:41 ..
+drwxr-xr-x 5 root root 4096 Feb  4 13:30 admin
+drwxr-xr-x 2 root root 4096 Feb  4 13:30 js
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo nano /etc/supervisor/conf.d/django.conf
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo nano /etc/supervisor/conf.d/telegram_bot.conf
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo nano /etc/supervisor/conf.d/instagram_bot.conf
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo supervisorctl reread
+django: available
+instagram_bot: available
+telegram_bot: available
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo supervisorctl update
+django: added process group
+instagram_bot: added process group
+telegram_bot: added process group
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo nano /etc/nginx/sites-available/django
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo supervisorctl start all
+django: ERROR (spawn error)
+instagram_bot:instagram_bot_00: ERROR (spawn error)
+telegram_bot:telegram_bot_00: ERROR (spawn error)
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo tail -f /var/log/supervisor/supervisord.log
+2025-02-04 13:50:36,269 WARN exited: telegram_bot_00 (exit status 127; not expected)
+2025-02-04 13:50:37,274 INFO spawned: 'django' with pid 64212
+2025-02-04 13:50:38,286 INFO spawned: 'instagram_bot_00' with pid 64213
+2025-02-04 13:50:38,289 WARN exited: django (exit status 127; not expected)
+2025-02-04 13:50:38,293 INFO gave up: django entered FATAL state, too many start retries too quickly
+2025-02-04 13:50:39,297 INFO spawned: 'telegram_bot_00' with pid 64214
+2025-02-04 13:50:39,300 WARN exited: instagram_bot_00 (exit status 127; not expected)
+2025-02-04 13:50:39,304 INFO gave up: instagram_bot_00 entered FATAL state, too many start retries too quickly
+2025-02-04 13:50:40,307 WARN exited: telegram_bot_00 (exit status 127; not expected)
+2025-02-04 13:50:41,309 INFO gave up: telegram_bot_00 entered FATAL state, too many start retries too quickly
+^C
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# which poetry
+/root/.local/bin/poetry
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# poetry env info
+
+Virtualenv
+Python:         3.12.7
+Implementation: CPython
+Path:           /root/.cache/pypoetry/virtualenvs/ai-for-sales-animals-items-7hkYuWcd-py3.12
+Executable:     /root/.cache/pypoetry/virtualenvs/ai-for-sales-animals-items-7hkYuWcd-py3.12/bin/python
+Valid:          True
+
+Base
+Platform:   linux
+OS:         posix
+Python:     3.12.7
+Path:       /usr
+Executable: /usr/bin/python3.12
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo nano /etc/supervisor/conf.d/django.conf
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo nano /etc/supervisor/conf.d/telegram_bot.conf
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo nano /etc/supervisor/conf.d/instagram_bot.conf
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo supervisorctl reread
+django: changed
+instagram_bot: changed
+telegram_bot: changed
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo supervisorctl update
+django: stopped
+django: updated process group
+instagram_bot: stopped
+instagram_bot: updated process group
+telegram_bot: stopped
+telegram_bot: updated process group
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo supervisorctl restart all
+telegram_bot: stopped
+django: ERROR (no such file)
+telegram_bot: ERROR (spawn error)
+instagram_bot: ERROR (spawn error)
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# cd ../
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers# poetry add gunicorn
+Using version ^23.0.0 for gunicorn
+
+Updating dependencies
+Resolving dependencies... (7.5s)
+
+Package operations: 1 install, 0 updates, 0 removals
+
+  - Installing gunicorn (23.0.0)
+
+Writing lock file
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers# sudo tail -f /var/log/django.err.log
+supervisor: couldn't chdir to /root/Toys_ai_managers/toys_e_commerence: ENOENT
+supervisor: child process was not spawned
+supervisor: couldn't chdir to /root/Toys_ai_managers/toys_e_commerence: ENOENT
+supervisor: child process was not spawned
+supervisor: couldn't chdir to /root/Toys_ai_managers/toys_e_commerence: ENOENT
+supervisor: child process was not spawned
+supervisor: couldn't chdir to /root/Toys_ai_managers/toys_e_commerence: ENOENT
+supervisor: child process was not spawned
+supervisor: couldn't chdir to /root/Toys_ai_managers/toys_e_commerence: ENOENT
+supervisor: child process was not spawned
+^C
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers# sudo supervisorctl restart all
+instagram_bot: ERROR (spawn error)
+telegram_bot: ERROR (spawn error)
+django: started
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers# cd toys_e_commerce/
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# poetry run gunicorn toys_e_commerce.wsgi:application --bind 127.0.0.1:8000
+
+[2025-02-04 14:00:57 +0000] [64379] [INFO] Starting gunicorn 23.0.0
+[2025-02-04 14:00:57 +0000] [64379] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2025-02-04 14:00:57 +0000] [64379] [ERROR] connection to ('127.0.0.1', 8000) failed: [Errno 98] Address already in use
+[2025-02-04 14:00:58 +0000] [64379] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2025-02-04 14:00:58 +0000] [64379] [ERROR] connection to ('127.0.0.1', 8000) failed: [Errno 98] Address already in use
+[2025-02-04 14:00:59 +0000] [64379] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2025-02-04 14:00:59 +0000] [64379] [ERROR] connection to ('127.0.0.1', 8000) failed: [Errno 98] Address already in use
+[2025-02-04 14:01:00 +0000] [64379] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2025-02-04 14:01:00 +0000] [64379] [ERROR] connection to ('127.0.0.1', 8000) failed: [Errno 98] Address already in use
+[2025-02-04 14:01:01 +0000] [64379] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2025-02-04 14:01:01 +0000] [64379] [ERROR] connection to ('127.0.0.1', 8000) failed: [Errno 98] Address already in use
+[2025-02-04 14:01:02 +0000] [64379] [ERROR] Can't connect to ('127.0.0.1', 8000)
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# ^C
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo supervisorctl stop all
+django: stopped
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# poetry run gunicorn toys_e_commerce.wsgi:application --bind 127.0.0.1:8000
+[2025-02-04 14:01:15 +0000] [64385] [INFO] Starting gunicorn 23.0.0
+[2025-02-04 14:01:15 +0000] [64385] [INFO] Listening at: http://127.0.0.1:8000 (64385)
+[2025-02-04 14:01:15 +0000] [64385] [INFO] Using worker: sync
+[2025-02-04 14:01:15 +0000] [64388] [INFO] Booting worker with pid: 64388
+^C[2025-02-04 14:01:45 +0000] [64385] [INFO] Handling signal: int
+[2025-02-04 14:01:45 +0000] [64388] [INFO] Worker exiting (pid: 64388)
+[2025-02-04 14:01:45 +0000] [64385] [INFO] Shutting down: Master
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# cat toys_e_commerce/wsgi.py
+"""
+WSGI config for toys_e_commerce project.
+
+It exposes the WSGI callable as a module-level variable named ``application``.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/5.1/howto/deployment/wsgi/
+"""
+
+import os
+
+from django.core.wsgi import get_wsgi_application
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'toys_e_commerce.settings')
+
+application = get_wsgi_application()
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo nano /etc/supervisor/conf.d/django.conf
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo supervisorctl reread
+django: changed
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo supervisorctl update
+django: stopped
+django: updated process group
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo supervisorctl restart all
+django: stopped
+instagram_bot: ERROR (spawn error)
+telegram_bot: ERROR (spawn error)
+django: started
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo nano /etc/nginx/sites-available/django
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# cat /etc/nginx/sites-available/django
+# Перенаправлення HTTP на HTTPS
+server {
+    listen 80;
+    server_name 209.38.101.165;
+    return 301 https://$server_name$request_uri;
+}
+
+# HTTPS сервер
+server {
+    listen 443 ssl;
+    server_name 209.38.101.165;
+
+    # SSL налаштування
+    ssl_certificate /etc/ssl/certs/server.crt;
+    ssl_certificate_key /etc/ssl/private/server.key;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+
+    # Максимальний розмір тіла запиту
+    client_max_body_size 10M;
+
+    # Статичні файли
+    location /static/ {
+        alias /root/Toys_ai_managers/toys_e_commerence/staticfiles/;
+        expires 30d;
+        access_log off;
+        add_header Cache-Control "public, no-transform";
+    }
+
+    # Проксі до Django
+    location / {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_pass http://127.0.0.1:8000;
+        proxy_connect_timeout 60s;
+        proxy_read_timeout 60s;
+    }
+}
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo nano /etc/nginx/sites-available/django
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo systemctl restart nginx
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce# sudo supervisorctl restart all
+django: stopped
+instagram_bot: ERROR (spawn error)
+telegram_bot: ERROR (spawn error)
+django: started
+root@ubuntu-s-1vcpu-512mb-10gb-ams3-01:~/Toys_ai_managers/toys_e_commerce#
+
+
+http://209.38.101.165/admin
+
+404 Not Found
+nginx/1.26.0 (Ubuntu)
